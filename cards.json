@@ -1,0 +1,131 @@
+[
+    {
+        "id": "hBD24-001",
+        "type": "主推",
+        "name": "Pavolia Reine",
+        "attribute": "綠",
+        "life": 5,
+        "skill": "グリーンエンハンス",
+        "spSkill": "Birthday Gift ～Green～",
+        "image": "images/hBD24-001_P.png",
+        "set": "PR卡"
+    },
+    {
+        "id": "hBD24-006",
+        "type": "主推",
+        "name": "Kureiji Ollie",
+        "attribute": "紫",
+        "life": 5,
+        "skill": "パープルエンハンス",
+        "spSkill": "Birthday Gift ～Purple～",
+        "image": "images/hBD24-006_P.png",
+        "set": "PR卡"
+    },
+    {
+        "id": "hBD24-007",
+        "type": "主推",
+        "name": "Gigi Murin",
+        "attribute": "黃",
+        "life": 5,
+        "skill": "イエローエンハンス",
+        "spSkill": "Birthday Gift ～Yellow～",
+        "image": "images/hBD24-007_P.png",
+        "set": "起始牌組「黄 不知火フレア」"
+    },
+    {
+        "id": "hBP01-001",
+        "type": "主推",
+        "name": "天音かなた",
+        "attribute": "白",
+        "life": 5,
+        "skill": "ぎゅっぎゅっ",
+        "spSkill": "握りつぶしちゃうぞ",
+        "image": "images/hBP01-001_OSR.png",
+        "set": "起始牌組「紫 癒月ちょこ」"
+    },
+    {
+        "id": "hBP01-002",
+        "type": "主推",
+        "name": "Nanashi Mumei",
+        "attribute": "白",
+        "life": 5,
+        "skill": "文明の守護者",
+        "spSkill": "アメイジング・ドローイング",
+        "image": "images/hBP01-002_OSR.png",
+        "set": "PR卡"
+    },
+    {
+        "id": "hBP01-003",
+        "type": "主推",
+        "name": "アキ・ローゼンタール",
+        "attribute": "綠",
+        "life": 5,
+        "skill": "サバイバルパワー",
+        "spSkill": "大地の唄",
+        "image": "images/hBP01-003_OSR.png",
+        "set": "補充包「クインテットスペクトラム」」"
+    },
+    {
+        "id": "hBP01-004",
+        "type": "主推",
+        "name": "兎田ぺこら",
+        "attribute": "綠",
+        "life": 6,
+        "skill": "野兎たち～",
+        "spSkill": "幸運兎",
+        "image": "images/hBP01-004_OSR.png"
+    },
+    {
+        "id": "hBP01-005",
+        "type": "主推",
+        "name": "鷹嶺ルイ",
+        "attribute": "紅",
+        "life": 5,
+        "skill": "女幹部の采配",
+        "spSkill": "ホークアイ",
+        "image": "images/hBP01-005_OSR.png"
+    },
+    {
+        "id": "hBP01-006",
+        "type": "主推",
+        "name": "Takanashi Kiara",
+        "attribute": "紅",
+        "life": 5,
+        "skill": "フェニックステール",
+        "spSkill": "Rise from the ashes",
+        "image": "images/hBP01-006_OSR.png"
+    },
+    {
+        "id": "hBP01-007",
+        "type": "主推",
+        "name": "星街すいせい",
+        "attribute": "藍",
+        "life": 5,
+        "skill": "ほうき星",
+        "spSkill": "シューティングスター",
+        "image": "images/hBP01-007_OSR.png"
+    },
+    {
+        "id": "hBP01-008",
+        "type": "主推",
+        "name": "Kobo Kanaeru",
+        "attribute": "藍",
+        "life": 6,
+        "skill": "レイン・シャーマニズム",
+        "spSkill": "雨乞い",
+        "image": "images/hBP01-008_OSR.png"
+    },
+    {
+        "id": "hBP01-009",
+        "type": "成員",
+        "tag": "#JP / #4期生 / #歌",
+        "name": "天音かなた",
+        "bloom": "Debut",
+        "attribute": "白",
+        "hp": 90,
+        "skill1": "こんかなた～",
+        "rule": "這個成員沒有張數限制",
+        "batonImage": ["images/arts_null.png"],
+        "image": "images/hBP01-009_C.png"
+    }
+]
