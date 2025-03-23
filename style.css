@@ -35,9 +35,18 @@ main {
     font-size: 26px;
     color: #ccc;
     display: none;  /* 初始為隱藏 */
+    width: 20px;
+    height: 20px;
+    line-height: 22px;
 }
+
+#clear-keyword:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 #clear-keyword {
-    top: 22%;
+    top: 17%;
 }
 
 #clear-tag {
@@ -48,7 +57,11 @@ main {
     top: 83%;
 }
 
-/* 只隱藏 #keyword 下拉選單的箭頭 */
-#keyword + .select2-container .select2-selection__arrow {
-    display: none;
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    transform: scale(1.5);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow:hover b {
+    transform: scale(1.7);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
