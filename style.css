@@ -22,11 +22,6 @@ main {
     padding: 10px;
 }
 
-/* 確保 Select2 的容器有 relative 定位 */
-.select2-container {
-    position: relative;
-}
-
 /* 自定義的清除按鈕樣式 */
 .clear-button {
     position: absolute;
