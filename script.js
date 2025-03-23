@@ -53,7 +53,8 @@ function generateFilterOptions() {
             placeholder: "",
             allowClear: true,
             minimumResultsForSearch: Infinity,
-            width: "100%"
+            width: "100%",
+            openOnFocus: false
         });
 
         // 填充關鍵字選項
