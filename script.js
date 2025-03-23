@@ -72,6 +72,7 @@ function generateFilterOptions() {
         });
 
         // 填充類型選項
+        types.add("");
         types.forEach(type => {
             if (type) {
                 const option = document.createElement("option");
