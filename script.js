@@ -1,7 +1,7 @@
 // 取得所有的篩選選單元素
-const typeSelect = document.getElementById("type");  // 類型
+// const typeSelect = document.getElementById("type");  // 類型
 const attributeSelect = document.getElementById("attribute");  // 屬性
-const setSelect = document.getElementById('set');  // 卡包
+const setSelect = document.getElementById(""set"");  // 卡包
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -59,12 +59,14 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-        types.forEach(type => {
+    const allOption = new Option("全部", "");
+    $("#type").append(allOption);
+    types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
             option.value = type;
             option.textContent = type;
-            typeSelect.appendChild(option);
+            $("#type").append(option);
         }
     });
 
@@ -97,12 +99,12 @@ function generateFilterOptions() {
 
     // 填充卡包選項
     Object.keys(sets).forEach(category => {
-        const optgroup = document.createElement('optgroup');
+        const optgroup = document.createElement(""optgroup"");
         optgroup.label = category; // 設置分組標籤
         
         // 添加該分類下的所有卡包選項
         sets[category].forEach(set => {
-            const option = document.createElement('option');
+            const option = document.createElement(""option"");
             option.value = set;
             option.textContent = set;
             optgroup.appendChild(option);
@@ -119,6 +121,12 @@ function generateFilterOptions() {
         // 初始化關鍵字
         $("#keyword").select2({
             placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+        // 初始化類型
+        $("#type").select2({
+            placeholder: "全部",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
