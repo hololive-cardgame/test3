@@ -213,6 +213,7 @@ function generateFilterOptions() {
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
+        $("#type").val("全部").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
