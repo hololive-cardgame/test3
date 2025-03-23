@@ -75,13 +75,13 @@ function generateFilterOptions() {
         });
         
         // 關鍵字
-        $("#keyword").select2({
+        $("#keyword").select2("destroy").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
         // 類型
-        $("#type").select2({
+        $("#type").select2("destroy").select2({
             placeholder: "全部",
             minimumResultsForSearch: Infinity,
             width: "100%"
