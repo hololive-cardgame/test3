@@ -27,40 +27,28 @@ main {
 }
 
 /* 定位清除按鈕到右側 */
-#clear-keyword {
+.clear-button {
     position: absolute;
-    top: 22%;
-    right: 16px;  /* 調整為你需要的距離 */
+    right: 20px;  /* 調整為你需要的距離 */
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 26px;
     color: #ccc;
     display: none;  /* 初始為隱藏 */
+}
+#clear-keyword {
+    top: 22%;
 }
 
 #clear-tag {
-    position: absolute;
     top: 78%;
-    right: 16px;  /* 調整為你需要的距離 */
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 26px;
-    color: #ccc;
-    display: none;  /* 初始為隱藏 */
 }
 
 #clear-set {
-    position: absolute;
-    top: 100%;
-    right: 16px;  /* 調整為你需要的距離 */
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 26px;
-    color: #ccc;
-    display: none;  /* 初始為隱藏 */
+    top: 83%;
 }
 
 /* 只隱藏 #keyword 下拉選單的箭頭 */
-#keyword + .select2-container .select2-selection__arrow, #tag + .select2-container .select2-selection__arrow {
+#keyword + .select2-container .select2-selection__arrow {
     display: none;
 }
