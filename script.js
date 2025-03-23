@@ -54,8 +54,14 @@ function generateFilterOptions() {
             keywordSelect.appendChild(option);
         }
     });
+    
     // 初始化關鍵字 Select2
     $(document).ready(function() {
-        $('#keyword').select2();  // 初始化 Select2
+        $('#keyword').select2({
+            maximumSelectionLength: 8,
+            placeholder: '',
+            allowClear: true,
+            minimumResultsForSearch: Infinity
+        });
     });
 }
