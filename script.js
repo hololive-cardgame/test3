@@ -59,6 +59,7 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
+    $("#type").empty();
     const allOption = new Option("全部", "");
     $("#type").append(allOption);
     types.forEach(type => {
