@@ -48,19 +48,6 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {        
-        // 關鍵字
-        $("#keyword").select2({
-            placeholder: "",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
-        });
-        // 類型
-        $("#type").select2({
-            placeholder: "全部",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
-        });
-
         // 填充關鍵字選項
         keywords.forEach(keyword => {
             if (keyword) {
@@ -79,6 +66,19 @@ function generateFilterOptions() {
                 option.textContent = type;
                 $("#type").append(option);
             }
+        });
+        
+        // 關鍵字
+        $("#keyword").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+        // 類型
+        $("#type").select2({
+            placeholder: "全部",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
         });
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
