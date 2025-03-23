@@ -59,10 +59,6 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-    $("#type").empty();
-    const allOption = new Option("全部", "");
-    $("#type").append(allOption);
-    /*
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -71,7 +67,7 @@ function generateFilterOptions() {
             $("#type").append(option);
         }
     });
-    */
+    
 
     // 清空屬性、多選框
     attributeSelect.innerHTML = "";
@@ -129,7 +125,7 @@ function generateFilterOptions() {
         });
         // 初始化類型
         $("#type").select2({
-            placeholder: "全部",
+            placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
@@ -215,7 +211,6 @@ function generateFilterOptions() {
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
-        $("#type").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
