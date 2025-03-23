@@ -58,7 +58,6 @@ function generateFilterOptions() {
     // 初始化關鍵字 Select2
     $(document).ready(function() {
         $('#keyword').select2({
-            maximumSelectionLength: 8,
             placeholder: '',
             allowClear: true,
             minimumResultsForSearch: Infinity
