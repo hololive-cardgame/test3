@@ -49,6 +49,17 @@ main {
     display: none;  /* 初始為隱藏 */
 }
 
+#clear-set {
+    position: absolute;
+    top: 100%;
+    right: 16px;  /* 調整為你需要的距離 */
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 26px;
+    color: #ccc;
+    display: none;  /* 初始為隱藏 */
+}
+
 /* 只隱藏 #keyword 下拉選單的箭頭 */
 #keyword + .select2-container .select2-selection__arrow, #tag + .select2-container .select2-selection__arrow {
     display: none;
