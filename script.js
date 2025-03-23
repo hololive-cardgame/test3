@@ -85,9 +85,6 @@ function generateFilterOptions() {
         
             // 隱藏清除按鈕
             $(this).hide();
-
-            // 防止點擊後再次開啟選單
-            $('#keyword').blur(); // 失去焦點，防止再次開啟選單
         });
 
         // 初始化清除按鈕狀態
