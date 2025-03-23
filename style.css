@@ -43,7 +43,7 @@ main {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#clear-keyword:hover {
+#clear-keyword:hover, #clear-tag:hover, #clear-set {
     background-color: #f0f0f0;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -58,17 +58,4 @@ main {
 
 #clear-set {
     top: 83%;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    width: 26px;
-    height: 26px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow:hover {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    transition: transform 0.3s ease, color 0.3s ease;
 }
