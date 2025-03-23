@@ -56,7 +56,7 @@ function generateFilterOptions() {
         });
         // 類型
         $("#type").select2({
-            placeholder: "",
+            placeholder: "全部",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
