@@ -22,15 +22,14 @@ main {
     padding: 10px;
 }
 
-/* 自定義的清除按鈕樣式 */
-.clear-button {
+/* 定位清除按鈕到右側 */
+#clear-keyword {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 10px;  /* 調整為你需要的距離 */
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 16px;
-    color: #aaa;
-    z-index: 9999; /* 確保按鈕在其他元素之上 */
-    display: none;
+    font-size: 18px;
+    color: #ccc;
+    display: none;  /* 初始為隱藏 */
 }
