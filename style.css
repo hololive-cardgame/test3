@@ -60,14 +60,15 @@ main {
     top: 83%;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-    transform: scale(1.5);
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    width: 26px;
+    height: 26px;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow:hover b {
-    transform: scale(1.7);
-    background-color: #f0f0f0;
+.select2-container--default .select2-selection--single .select2-selection__arrow:hover {
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    text-align: center;
+    background-color: #f0f0f0;
     transition: transform 0.3s ease, color 0.3s ease;
 }
