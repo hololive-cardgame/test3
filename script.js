@@ -72,12 +72,12 @@ function generateFilterOptions() {
         });
 
         // 填充類型選項
-        types.add("全部");
+        types.add("");
         types.forEach(type => {
             if (type) {
                 const option = document.createElement("option");
                 option.value = type;
-                option.textContent = type;
+                option.textContent = type ? type : "全部";  // 顯示 "全部" 作為空字串的選項
                 $("#type").append(option);
             }
         });
