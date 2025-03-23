@@ -21,3 +21,13 @@ main {
     width: 25%;
     padding: 10px;
 }
+
+clear-button {
+    position: absolute; /* 絕對定位 */
+    top: 50%; /* 垂直居中 */
+    right: 10px; /* 距離右邊 10px */
+    transform: translateY(-50%); /* 精確垂直居中 */
+    cursor: pointer; /* 設置為點擊手型 */
+    font-size: 16px; /* 字體大小 */
+    color: #aaa; /* 顏色 */
+}
