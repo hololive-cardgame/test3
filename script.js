@@ -59,6 +59,9 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
+    $("#type").empty();
+    const allOption = new Option("全部", "");
+    $("#type").append(allOption);
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -141,10 +144,6 @@ function generateFilterOptions() {
             width: "100%"
         });
 
-        $("#type").empty();
-        const allOption = new Option("全部", "");
-        $("#type").append(allOption);
-
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
@@ -214,7 +213,7 @@ function generateFilterOptions() {
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
-        $("#type").val("全部").trigger("change");
+        $("#type").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
