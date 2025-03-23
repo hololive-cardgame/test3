@@ -48,12 +48,6 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {        
-        // 類型添加「全部」
-        const allOption = document.createElement("option");
-        allOption.value = "";
-        allOption.textContent = "全部";
-        $("#type").append(allOption);
-        
         // 填充關鍵字選項
         keywords.forEach(keyword => {
             if (keyword) {
@@ -64,6 +58,11 @@ function generateFilterOptions() {
             }
         });
 
+        // 類型添加「全部」
+        const allOption = document.createElement("option");
+        allOption.value = "";
+        allOption.textContent = "全部";
+        $("#type").append(allOption);
         // 填充類型選項
         types.forEach(type => {
             if (type) {
@@ -74,18 +73,23 @@ function generateFilterOptions() {
             }
         });
         
-        // 關鍵字
-        $("#keyword").select2("destroy").select2({
+        // 初始化關鍵字
+        $("#keyword").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-        // 類型
-        $("#type").select2("destroy").select2({
+        
+        // 初始化類型
+        $("#type").select2({
             placeholder: "全部",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
+
+        // 強制刷新
+        $("#keyword").trigger("change");
+        $("#type").trigger("change");
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
