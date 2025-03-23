@@ -1,10 +1,10 @@
 // 取得所有的篩選選單元素
-// const keywordSelect = document.getElementById('keyword');  // 關鍵字
+// const keywordSelect = document.getElementById("keyword");  // 關鍵字
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
 // 使用 fetch 從 JSON 檔案載入資料
-fetch('cards.json')
+fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
     .then(data => {
         cardsData = data;
@@ -12,7 +12,7 @@ fetch('cards.json')
         displayCards(cardsData);  // 顯示所有卡牌
     })
     .catch(error => {
-        console.error('Error loading the card data:', error);
+        console.error("Error loading the card data:", error);
     });
 
 // 根據 JSON 資料生成篩選選項
@@ -33,7 +33,7 @@ function generateFilterOptions() {
         types.add(card.type);
         attributes.add(card.attribute);
         if (card.tag) {
-            card.tag.split(' / ').forEach(tag => tags.add(tag));
+            card.tag.split(" / ").forEach(tag => tags.add(tag));
         }
         if (card.set) {
             if (card.set.includes("起始牌組")) {
@@ -49,25 +49,25 @@ function generateFilterOptions() {
     // 初始化 Select2
     $(document).ready(function() {
         // 關鍵字
-        $('#keyword').select2({
-            placeholder: '',
+        $("#keyword").select2({
+            placeholder: "",
             allowClear: true,
             minimumResultsForSearch: Infinity,
-            width: 100%
+            width: "100%"
         });
 
         // 填充關鍵字選項
         keywords.forEach(keyword => {
             if (keyword) {
-                const option = document.createElement('option');
+                const option = document.createElement("option");
                 option.value = keyword;
                 option.textContent = keyword;
-                $('#keyword').append(option);
+                $("#keyword").append(option);
             }
         });
         
         // 清空選擇框的值，並觸發更新
-        $('#keyword').val("").trigger('change');
+        $("#keyword").val("").trigger("change");
     });
     
 }
