@@ -42,7 +42,7 @@ main {
     line-height: 27px;
 }
 
-#clear-keyword:hover, #clear-tag:hover, #clear-set {
+#clear-keyword:hover, #clear-tag:hover, #clear-set:hover {
     background-color: #f0f0f0;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
