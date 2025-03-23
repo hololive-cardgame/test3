@@ -22,7 +22,7 @@ main {
     padding: 10px;
 }
 
-clear-button {
+.clear-button {
     position: absolute; /* 絕對定位 */
     top: 50%; /* 垂直居中 */
     right: 10px; /* 距離右邊 10px */
