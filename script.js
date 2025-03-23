@@ -1,5 +1,6 @@
 // 取得所有的篩選選單元素
-const typeSelect = document.getElementById('type');  // 類型
+const typeSelect = document.getElementById("type");  // 類型
+const attributeSelect = document.getElementById("attribute");  // 屬性
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -58,10 +59,25 @@ function generateFilterOptions() {
 
     // 填充類型選項
         types.forEach(type => {
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.value = type;
         option.textContent = type;
         typeSelect.appendChild(option);
+    });
+
+    // 清空屬性、多選框
+    attributeSelect.innerHTML = "";
+    attributes.forEach(attr => {
+        if (attr) {
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = attr;
+            checkbox.name = "attribute";
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(attr));
+            attributeSelect.appendChild(label);
+        }
     });
 
     // 初始化 Select2
