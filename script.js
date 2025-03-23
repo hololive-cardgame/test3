@@ -48,6 +48,12 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {        
+        // 類型添加「全部」
+        const allOption = document.createElement("option");
+        allOption.value = "";
+        allOption.textContent = "全部";
+        $("#type").append(option);
+        
         // 填充關鍵字選項
         keywords.forEach(keyword => {
             if (keyword) {
