@@ -48,21 +48,23 @@ function generateFilterOptions() {
     });
 
     // 填充關鍵字選項
-        keywords.forEach(keyword => {
-            if (keyword) {
-                const option = document.createElement("option");
-                option.value = keyword;
-                option.textContent = keyword;
-                $("#keyword").append(option);
-            }
-        });
+    keywords.forEach(keyword => {
+        if (keyword) {
+            const option = document.createElement("option");
+            option.value = keyword;
+            option.textContent = keyword;
+            $("#keyword").append(option);
+          }
+    });
 
     // 填充類型選項
         types.forEach(type => {
-        const option = document.createElement("option");
-        option.value = type;
-        option.textContent = type;
-        typeSelect.appendChild(option);
+        if (type) {
+            const option = document.createElement("option");
+            option.value = type;
+            option.textContent = type;
+            typeSelect.appendChild(option);
+        }
     });
 
     // 清空屬性、多選框
@@ -80,10 +82,28 @@ function generateFilterOptions() {
         }
     });
 
+    // 將 Set 轉換為數組，並進行排序
+    const sortedTags = Array.from(tags).sort();
+    // 填充標籤選項
+        sortedTags.forEach(tag => {
+            if (tag) {
+                const option = document.createElement("option");
+                option.value = tag;
+                option.textContent = tag;
+                $("#tag").append(option);
+            }
+        });
+
     // 初始化 Select2
     $(document).ready(function() {
         // 初始化關鍵字
         $("#keyword").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+        // 初始化標籤
+        $("#tag").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
@@ -93,10 +113,16 @@ function generateFilterOptions() {
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
         });
+        $("#tag").on("select2:select", function (e) {
+            $("#clear-keyword").show();
+        });
 
         // 監聽 Select2 的清除事件，當選擇框清除選項時隱藏自定義的清除按鈕
         $("#keyword").on("select2:clear", function (e) {
             $("#clear-keyword").hide();  // 隱藏自定義清除按鈕
+        });
+        $("#tag").on("select2:clear", function (e) {
+            $("#clear-keyword").hide();
         });
 
         // 當自定義的清除按鈕被點擊時，清除選擇框的值並手動關閉下拉選單
@@ -110,14 +136,29 @@ function generateFilterOptions() {
             // 隱藏清除按鈕
             $(this).hide();
         });
+        
+        $("#clear-tag").on("click", function() {
+            // 清空選擇框的值並觸發更新
+            $("#tag").val("").trigger("change");
+        
+            // 手動關閉下拉選單
+            $("#tag").select2("close");
+        
+            // 隱藏清除按鈕
+            $(this).hide();
+        });
 
         // 初始化清除按鈕狀態
         if ($("#keyword").val() === "") {
             $("#clear-keyword").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
         }
+        if ($("#tag").val() === "") {
+            $("#clear-tag").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
+        }
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
+        $("#tag").val("").trigger("change");
     });
     
 }
