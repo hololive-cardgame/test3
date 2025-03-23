@@ -1,6 +1,7 @@
 // 取得所有的篩選選單元素
 const typeSelect = document.getElementById("type");  // 類型
 const attributeSelect = document.getElementById("attribute");  // 屬性
+const setSelect = document.getElementById('set');  // 卡包
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -94,6 +95,25 @@ function generateFilterOptions() {
             }
         });
 
+    // 填充卡包選項
+    Object.keys(sets).forEach(category => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = category; // 設置分組標籤
+        
+        // 添加該分類下的所有卡包選項
+        sets[category].forEach(set => {
+            const option = document.createElement('option');
+            option.value = set;
+            option.textContent = set;
+            optgroup.appendChild(option);
+        });
+
+        // 把分組添加到 select 元素中
+        setSelect.appendChild(optgroup);
+    });
+    // 設定預設為空值（選單本身保持空）
+    setSelect.value = "";
+
     // 初始化 Select2
     $(document).ready(function() {
         // 初始化關鍵字
@@ -108,6 +128,12 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
+        // 初始化卡包
+        $("#set").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
@@ -116,6 +142,9 @@ function generateFilterOptions() {
         $("#tag").on("select2:select", function (e) {
             $("#clear-tag").show();
         });
+        $("#set").on("select2:select", function (e) {
+            $("#clear-set").show();
+        });
 
         // 監聽 Select2 的清除事件，當選擇框清除選項時隱藏自定義的清除按鈕
         $("#keyword").on("select2:clear", function (e) {
@@ -123,6 +152,9 @@ function generateFilterOptions() {
         });
         $("#tag").on("select2:clear", function (e) {
             $("#clear-tag").hide();
+        });
+        $("#set").on("select2:clear", function (e) {
+            $("#clear-set").hide();
         });
 
         // 當自定義的清除按鈕被點擊時，清除選擇框的值並手動關閉下拉選單
@@ -148,6 +180,17 @@ function generateFilterOptions() {
             $(this).hide();
         });
 
+        $("#clear-set").on("click", function() {
+            // 清空選擇框的值並觸發更新
+            $("#set").val("").trigger("change");
+        
+            // 手動關閉下拉選單
+            $("#set").select2("close");
+        
+            // 隱藏清除按鈕
+            $(this).hide();
+        });
+
         // 初始化清除按鈕狀態
         if ($("#keyword").val() === "") {
             $("#clear-keyword").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
@@ -155,10 +198,14 @@ function generateFilterOptions() {
         if ($("#tag").val() === "") {
             $("#clear-tag").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
         }
+        if ($("#set").val() === "") {
+            $("#clear-set").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
+        }
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
         $("#tag").val("").trigger("change");
+        $("#set").val("").trigger("change");
     });
     
 }
