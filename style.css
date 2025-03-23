@@ -29,18 +29,17 @@ main {
 /* 定位清除按鈕到右側 */
 .clear-button {
     position: absolute;
-    right: 20px;  /* 調整為你需要的距離 */
+    right: 27px;  /* 調整為你需要的距離 */
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 26px;
     color: #ccc;
     display: none;  /* 初始為隱藏 */
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     text-align: center;
-    line-height: 22px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    line-height: 27px;
 }
 
 #clear-keyword:hover, #clear-tag:hover, #clear-set {
@@ -58,4 +57,20 @@ main {
 
 #clear-set {
     top: 83%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow:hover {
+    height: 26px;
+    width: 26px;
+    background-color: #0006ff33;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 50%;
 }
