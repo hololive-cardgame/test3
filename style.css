@@ -38,7 +38,7 @@ main {
     display: none;  /* 初始為隱藏 */
 }
 
-/* 隱藏 select2 預設的箭頭 */
-.select2-selection__arrow {
+/* 只隱藏 #keyword 下拉選單的箭頭 */
+#keyword + .select2-container .select2-selection__arrow {
     display: none;
 }
