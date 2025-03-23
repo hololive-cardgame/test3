@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>卡牌查詢網站</title>
+    <!-- 標籤頁小圖示 -->
+    <link rel="icon" href="icon.png" type="image/png">
+    <!-- 載入css -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  </head>
 
+  <body>
+    <header>
+      <h1>卡牌查詢</h1>
+    </header>
+
+    <main>
+      <div class="left-side">
+        <!-- 篩選條件 -->
+         <form id="filter-form">
+           <label for="keyword">關鍵字</label>
+           <select id="keyword" name="keyword">
+             <!-- 下拉選單選項會從 JSON 動態加載 -->
+           </select>
+
+           <label for="type">類型</label>
+            <select id="type" name="type">
+              <option value="">全部</option>
+              <!-- 下拉選單選項會從 JSON 動態加載 -->
+            </select>
+
+          <label for="attribute">屬性</label>
+          <div id="attribute-filters">
+            <!-- 下拉選單選項會從 JSON 動態加載 -->
+          </div>
+
+           <label for="tag">標籤</label>
+           <select id="tag" name="tag">
+             <!-- 下拉選單選項會從 JSON 動態加載 -->
+           </select>
+
+           <label for="set">卡包：</label>
+           <select id="set" name="set">
+             <option value="" disabled selected></option>
+             <!-- 下拉選單選項會從 JSON 動態加載 -->
+           </select>
+
+           <!-- 清除篩選按鈕 -->
+           <button type="button" id="clear-filters">清除篩選條件</button>
+         </form>
+      </div>
+
+      <div class="right-side">
+        <!-- 卡牌展示區 -->
+        <div id="card-container">
+          <!-- 卡牌會在這裡動態加載 -->
+        </div>
+      </div>
+    </main>
+
+    <footer>
+       <p>© 2025 卡牌查詢網站</p>
+    </footer>
+
+    <!-- 載入js -->
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  </body>
+</html>
