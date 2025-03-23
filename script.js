@@ -1,4 +1,5 @@
-const keywordSelect = document.getElementById('keyword');  // 關鍵字
+// 取得所有的篩選選單元素
+// const keywordSelect = document.getElementById('keyword');  // 關鍵字
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -45,22 +46,27 @@ function generateFilterOptions() {
         }
     });
 
-    // 填充關鍵字選項
-    keywords.forEach(keyword => {
-        if (keyword) {
-            const option = document.createElement('option');
-            option.value = keyword;
-            option.textContent = keyword;
-            keywordSelect.appendChild(option);
-        }
-    });
-    
-    // 初始化關鍵字 Select2
+    // 初始化 Select2
     $(document).ready(function() {
+        // 關鍵字
         $('#keyword').select2({
             placeholder: '',
             allowClear: true,
             minimumResultsForSearch: Infinity
         });
+
+        // 填充關鍵字選項
+        keywords.forEach(keyword => {
+            if (keyword) {
+                const option = document.createElement('option');
+                option.value = keyword;
+                option.textContent = keyword;
+                $('#keyword').append(option);
+            }
+        });
+        
+        // 清空選擇框的值，並觸發更新
+        $('#keyword').val("").trigger('change');
     });
+    
 }
