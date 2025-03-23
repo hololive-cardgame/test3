@@ -62,6 +62,7 @@ function generateFilterOptions() {
     $("#type").empty();
     const allOption = new Option("全部", "");
     $("#type").append(allOption);
+    /*
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -70,6 +71,7 @@ function generateFilterOptions() {
             $("#type").append(option);
         }
     });
+    */
 
     // 清空屬性、多選框
     attributeSelect.innerHTML = "";
