@@ -75,7 +75,7 @@ function generateFilterOptions() {
         const allOption = document.createElement("option");
         allOption.value = "";
         option.textContent = 全部;
-        $("#type").append(option);
+        $("#type").append(allOption);
         types.forEach(type => {
             if (type) {
                 const option = document.createElement("option");
