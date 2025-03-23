@@ -1,6 +1,3 @@
-// 取得所有的篩選選單元素
-// const keywordSelect = document.getElementById("keyword");  // 關鍵字
-
 let filteredCards = [];  // 篩選後的卡牌資料
 
 // 使用 fetch 從 JSON 檔案載入資料
@@ -46,9 +43,7 @@ function generateFilterOptions() {
         }
     });
 
-    // 初始化 Select2
-    $(document).ready(function() {        
-        // 填充關鍵字選項
+    // 填充關鍵字選項
         keywords.forEach(keyword => {
             if (keyword) {
                 const option = document.createElement("option");
@@ -58,12 +53,7 @@ function generateFilterOptions() {
             }
         });
 
-        // 類型添加「全部」
-        const allOption = document.createElement("option");
-        allOption.value = "";
-        allOption.textContent = "全部";
-        $("#type").append(allOption);
-        // 填充類型選項
+    // 填充類型選項
         types.forEach(type => {
             if (type) {
                 const option = document.createElement("option");
@@ -72,7 +62,9 @@ function generateFilterOptions() {
                 $("#type").append(option);
             }
         });
-        
+
+    // 初始化 Select2
+    $(document).ready(function() {
         // 初始化關鍵字
         $("#keyword").select2({
             placeholder: "",
@@ -86,10 +78,6 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-
-        // 強制刷新
-        $("#keyword").trigger("change");
-        $("#type").trigger("change");
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
