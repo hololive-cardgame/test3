@@ -51,10 +51,8 @@ function generateFilterOptions() {
         // 關鍵字
         $("#keyword").select2({
             placeholder: "",
-            allowClear: true,
             minimumResultsForSearch: Infinity,
-            width: "100%",
-            openOnFocus: false
+            width: "100%"
         });
 
         // 填充關鍵字選項
@@ -67,11 +65,32 @@ function generateFilterOptions() {
             }
         });
 
-        // 監聽 select2:clear 事件，當清除選項後，手動關閉下拉選單
-        $('#keyword').on('select2:clear', function (e) {
-            // 觸發 clear 事件後，手動關閉下拉選單
-            $(this).select2('close');
+        // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
+        $("#keyword").on("select2:select", function (e) {
+            $("#clear-keyword").show();  // 顯示自定義清除按鈕
         });
+
+        // 監聽 Select2 的清除事件，當選擇框清除選項時隱藏自定義的清除按鈕
+        $("#keyword").on("select2:clear", function (e) {
+            $("#clear-keyword").hide();  // 隱藏自定義清除按鈕
+        });
+
+        // 當自定義的清除按鈕被點擊時，清除選擇框的值並手動關閉下拉選單
+        $("#clear-keyword").on("click", function() {
+            // 清空選擇框的值並觸發更新
+            $("#keyword").val("").trigger("change");
+        
+            // 手動關閉下拉選單
+            $("#keyword").select2("close");
+        
+            // 隱藏清除按鈕
+            $(this).hide();
+        });
+
+        // 初始化清除按鈕狀態
+        if ($("#keyword").val() === "") {
+            $("#clear-keyword").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
+        }
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
