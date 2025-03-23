@@ -52,7 +52,7 @@ function generateFilterOptions() {
         const allOption = document.createElement("option");
         allOption.value = "";
         allOption.textContent = "全部";
-        $("#type").append(option);
+        $("#type").append(allOption);
         
         // 填充關鍵字選項
         keywords.forEach(keyword => {
