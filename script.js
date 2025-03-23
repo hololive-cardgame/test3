@@ -99,12 +99,12 @@ function generateFilterOptions() {
 
     // 填充卡包選項
     Object.keys(sets).forEach(category => {
-        const optgroup = document.createElement(""optgroup"");
+        const optgroup = document.createElement("optgroup");
         optgroup.label = category; // 設置分組標籤
         
         // 添加該分類下的所有卡包選項
         sets[category].forEach(set => {
-            const option = document.createElement(""option"");
+            const option = document.createElement("option");
             option.value = set;
             option.textContent = set;
             optgroup.appendChild(option);
