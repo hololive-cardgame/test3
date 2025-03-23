@@ -53,7 +53,7 @@ function generateFilterOptions() {
             placeholder: "",
             allowClear: true,
             minimumResultsForSearch: Infinity,
-            width: "resolve"
+            width: "100%"
         });
 
         // 填充關鍵字選項
@@ -64,6 +64,12 @@ function generateFilterOptions() {
                 option.textContent = keyword;
                 $("#keyword").append(option);
             }
+        });
+
+        // 監聽 select2:clear 事件，當清除選項後，手動關閉下拉選單
+        $('#keyword').on('select2:clear', function (e) {
+            // 觸發 clear 事件後，手動關閉下拉選單
+            $(this).select2('close');
         });
         
         // 清空選擇框的值，並觸發更新
