@@ -74,7 +74,7 @@ function generateFilterOptions() {
         // 填充類型選項
         const allOption = document.createElement("option");
         allOption.value = "";
-        option.textContent = 全部;
+        option.textContent = "全部";
         $("#type").append(allOption);
         types.forEach(type => {
             if (type) {
