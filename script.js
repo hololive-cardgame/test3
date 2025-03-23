@@ -47,13 +47,7 @@ function generateFilterOptions() {
     });
 
     // 初始化 Select2
-    $(document).ready(function() {
-        // 類型添加「全部」
-        const allOption = document.createElement("option");
-        allOption.value = "";
-        allOption.textContent = "全部";
-        $("#type").append(allOption);
-        
+    $(document).ready(function() {        
         // 關鍵字
         $("#keyword").select2({
             placeholder: "",
