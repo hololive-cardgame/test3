@@ -52,7 +52,8 @@ function generateFilterOptions() {
         $('#keyword').select2({
             placeholder: '',
             allowClear: true,
-            minimumResultsForSearch: Infinity
+            minimumResultsForSearch: Infinity,
+            width: 100%
         });
 
         // 填充關鍵字選項
