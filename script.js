@@ -114,7 +114,7 @@ function generateFilterOptions() {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
         });
         $("#tag").on("select2:select", function (e) {
-            $("#clear-keyword").show();
+            $("#clear-tag").show();
         });
 
         // 監聽 Select2 的清除事件，當選擇框清除選項時隱藏自定義的清除按鈕
@@ -122,7 +122,7 @@ function generateFilterOptions() {
             $("#clear-keyword").hide();  // 隱藏自定義清除按鈕
         });
         $("#tag").on("select2:clear", function (e) {
-            $("#clear-keyword").hide();
+            $("#clear-tag").hide();
         });
 
         // 當自定義的清除按鈕被點擊時，清除選擇框的值並手動關閉下拉選單
