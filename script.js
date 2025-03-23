@@ -65,6 +65,12 @@ function generateFilterOptions() {
             }
         });
 
+        // 在 Select2 的容器內插入自定義清除按鈕
+        $('#keyword').on('select2:open', function() {
+            var select2Container = $(".select2-container");
+            select2Container.find('.select2-selection').append($('#clear-keyword'));  // 把清除按鈕移動到容器內
+        });
+
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
