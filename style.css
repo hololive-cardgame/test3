@@ -29,22 +29,22 @@ main {
 /* 定位清除按鈕到右側 */
 #clear-keyword {
     position: absolute;
-    top: 50%;
-    right: 10px;  /* 調整為你需要的距離 */
+    top: 22%;
+    right: 16px;  /* 調整為你需要的距離 */
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 24px;
+    font-size: 26px;
     color: #ccc;
     display: none;  /* 初始為隱藏 */
 }
 
 #clear-tag {
     position: absolute;
-    top: 100%;
-    right: 10px;  /* 調整為你需要的距離 */
+    top: 78%;
+    right: 16px;  /* 調整為你需要的距離 */
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 24px;
+    font-size: 26px;
     color: #ccc;
     display: none;  /* 初始為隱藏 */
 }
