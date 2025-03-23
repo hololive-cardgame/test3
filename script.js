@@ -1,3 +1,6 @@
+// 取得所有的篩選選單元素
+const typeSelect = document.getElementById('type');  // 類型
+
 let filteredCards = [];  // 篩選後的卡牌資料
 
 // 使用 fetch 從 JSON 檔案載入資料
@@ -55,26 +58,17 @@ function generateFilterOptions() {
 
     // 填充類型選項
         types.forEach(type => {
-            if (type) {
-                const option = document.createElement("option");
-                option.value = type;
-                option.textContent = type;
-                $("#type").append(option);
-            }
-        });
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeSelect.appendChild(option);
+    });
 
     // 初始化 Select2
     $(document).ready(function() {
         // 初始化關鍵字
         $("#keyword").select2({
             placeholder: "",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
-        });
-        
-        // 初始化類型
-        $("#type").select2({
-            placeholder: "全部",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
