@@ -114,8 +114,6 @@ function generateFilterOptions() {
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
-        // 清空選擇框的值，並觸發更新
-        $("#type").val("").trigger("change");
     });
     
 }
