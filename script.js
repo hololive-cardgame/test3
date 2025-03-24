@@ -224,7 +224,7 @@ function generateFilterOptions() {
 }
 
 // 清除篩選條件按鈕
-clearFiltersBtn.addEventListener('click', () => {
+clearFiltersBtn.addEventListener("click", () => {
     // 檢查是否有任何篩選條件被選擇
     const isAnyFilterSelected = $("#keyword").val() ||
                                 $("#type").val() ||
