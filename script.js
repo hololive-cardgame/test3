@@ -268,9 +268,9 @@ function displayCards(cards) {
     cards.forEach(card => {
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
-        cardElement.innerHTML = "
+        cardElement.innerHTML = `
             <img src="${card.image}" alt="${card.name}">
-        ";
+        `;
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
             showCardModal(card);
