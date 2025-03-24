@@ -59,7 +59,11 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-    // $("#type").select2();
+    $("#type").select2({
+        placeholder: "全部",
+        minimumResultsForSearch: Infinity,
+        width: "100%"
+    });
     const allOption = new Option("全部","allOption",true,true);
     
     
@@ -71,7 +75,7 @@ function generateFilterOptions() {
             $("#type").append(option);
         }
     });
-    // $("#type").trigger("change");
+    $("#type").trigger("change");
     
 
     // 清空屬性、多選框
@@ -128,14 +132,14 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-        
+        /*
         // 初始化類型
         $("#type").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-        
+        */
         // 初始化標籤
         $("#tag").select2({
             placeholder: "",
