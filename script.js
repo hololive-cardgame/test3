@@ -282,7 +282,7 @@ function displayCards(cards) {
 
 // 根據篩選條件顯示卡牌
 function filterCards() {
-    const keyword = $("#keyword").val().toLowerCase() || "";
+    const keyword = $("#keyword").val();
     const type = $("#type").val();
     const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);
     const tag = $("#tag").val();
