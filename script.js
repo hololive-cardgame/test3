@@ -1,5 +1,4 @@
 // 取得所有的篩選選單元素
-// const typeSelect = document.getElementById("type");  // 類型
 const attributeSelect = document.getElementById("attribute");  // 屬性
 const setSelect = document.getElementById("set");  // 卡包
 
@@ -58,14 +57,13 @@ function generateFilterOptions() {
           }
     });
 
-    // 填充類型選項
+    // 初始化類型
     $("#type").select2({
         minimumResultsForSearch: Infinity,
         width: "100%"
     });
+    // 填充類型選項
     const allOption = new Option("全部","allOption",true,true);
-    
-    
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -74,6 +72,7 @@ function generateFilterOptions() {
             $("#type").append(option);
         }
     });
+    // 觸發更新
     $("#type").trigger("change");
     
 
@@ -131,14 +130,9 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-        /*
-        // 初始化類型
-        $("#type").select2({
-            placeholder: "",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
-        });
-        */
+
+        // 初始化類型（在上方）
+
         // 初始化標籤
         $("#tag").select2({
             placeholder: "",
