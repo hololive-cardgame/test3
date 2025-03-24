@@ -325,6 +325,6 @@ function removeDuplicates(cards) {
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
 
-$("#keyword, #type, #tag, #set").on("change", function() {
+$("#keyword, #type, #tag, #set").on("select2:select", function() {
     filterCards();
 });
