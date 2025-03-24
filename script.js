@@ -64,8 +64,11 @@ function generateFilterOptions() {
         width: "100%"
     });
     // 填充類型選項
-    const allOption = new Option("全部","全部",true,true);
-    $("#type").append(allOption);
+    // 檢查是否已經存在 "全部" 選項，如果不存在才插入
+    if ($("#type option[value='全部']").length === 0) {
+        const allOption = new Option("全部","allOption",true,true);
+        $("#type").append(allOption);
+    }
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -234,7 +237,7 @@ clearFiltersBtn.addEventListener('click', () => {
     if (isAnyFilterSelected) {
         // 如果有篩選條件被選擇，則清除所有篩選條件
         $("#keyword").val("").trigger("change");
-        $("#type").val("全部").trigger("change");
+        $("#type").val("allOption").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
         
