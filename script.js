@@ -321,3 +321,10 @@ function removeDuplicates(cards) {
 
     return uniqueCards;
 }
+
+// 監聽篩選條件變動，觸發篩選
+attributeSelect.addEventListener("change", filterCards);
+
+$("#keyword, #type, #tag, #set").on("change", function() {
+    filterCards();
+});
