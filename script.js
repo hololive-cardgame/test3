@@ -273,7 +273,7 @@ function displayCards(cards) {
 
 // 根據篩選條件顯示卡牌
 function filterCards() {
-    const keyword = $("#keyword").val();
+    const keyword = $("#keyword").val().toLowerCase();
     const type = $("#type").val();
     const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);
     const tag = $("#tag").val();
@@ -315,5 +315,4 @@ function removeDuplicates(cards) {
 }
 
 // 監聽篩選條件變動，觸發篩選
-document.getElementById('filter-form').addEventListener('change', filterCards);
 attributeSelect.addEventListener("change", filterCards);
