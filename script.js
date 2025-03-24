@@ -66,7 +66,7 @@ function generateFilterOptions() {
     // 填充類型選項
     // 檢查是否已經存在 "全部" 選項，如果不存在才插入
     if ($("#type option[value='全部']").length === 0) {
-        const allOption = new Option("全部","allOption",true,true);
+        const allOption = new Option("全部","allOption");
         $("#type").append(allOption);
     }
     types.forEach(type => {
