@@ -1,5 +1,5 @@
 // 取得所有的篩選選單元素
-const typeSelect = document.getElementById("type");  // 類型
+// const typeSelect = document.getElementById("type");  // 類型
 const attributeSelect = document.getElementById("attribute");  // 屬性
 const setSelect = document.getElementById("set");  // 卡包
 
@@ -59,10 +59,8 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-    const allOption = document.createElement("option");
-    allOption.value = "";
-    allOption.textContent = type;
-    typeSelect.appendChild(allOption);
+    const allOption = new Option("全部","",true,true);
+    $("#type").append(allOption).trigger("change");
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
