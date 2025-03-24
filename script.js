@@ -60,7 +60,7 @@ function generateFilterOptions() {
 
     // 填充類型選項
     const allOption = new Option("全部","",true,true);
-    $("#type").append(allOption).trigger("change");
+    $("#type").select2();
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
