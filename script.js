@@ -1,6 +1,7 @@
 // 取得所有的篩選選單元素
 const attributeSelect = document.getElementById("attribute");  // 屬性
 const setSelect = document.getElementById("set");  // 卡包
+const clearFiltersBtn = document.getElementById('clear-filters');  // 清除篩選條件按鈕
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -220,3 +221,35 @@ function generateFilterOptions() {
     });
     
 }
+
+// 清除篩選條件按鈕
+clearFiltersBtn.addEventListener('click', () => {
+    // 檢查是否有任何篩選條件被選擇
+    const isAnyFilterSelected = $("#keyword").val() ||
+                                $("#type").val() ||
+                                Array.from(document.querySelectorAll('input[name="attribute"]')).some(checkbox => checkbox.checked) ||
+                                $("#tag").val() ||
+                                $("#set").val();
+    if (isAnyFilterSelected) {
+        // 如果有篩選條件被選擇，則清除所有篩選條件
+        $("#keyword").val("").trigger("change");
+        $("#type").val("allOption").trigger("change");
+        $("#tag").val("").trigger("change");
+        $("#set").val("").trigger("change");
+        
+        // 清除所有屬性篩選框的選擇
+        const attributeCheckboxes = document.querySelectorAll('input[name="attribute"]');
+        attributeCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;  // 取消選中所有 checkbox
+        });
+
+        // 初始化清除按鈕狀態
+        $("#clear-keyword").hide(); // 隱藏 "X"
+        $("#clear-tag").hide();
+        $("#clear-set").hide();
+
+        // 顯示所有卡牌
+        displayCards(cardsData);
+    }
+});
+
