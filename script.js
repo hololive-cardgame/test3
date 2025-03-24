@@ -128,7 +128,7 @@ function generateFilterOptions() {
     // 初始化 Select2
     $(document).ready(function() {
         // 初始化關鍵字、標籤、卡包
-        $("#keyword", "#tag", "#set").select2({
+        $("#keyword, #tag, #set").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
