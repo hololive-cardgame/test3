@@ -233,7 +233,7 @@ clearFiltersBtn.addEventListener('click', () => {
     if (isAnyFilterSelected) {
         // 如果有篩選條件被選擇，則清除所有篩選條件
         $("#keyword").val("").trigger("change");
-        $("#type").val("allOption").trigger("change");
+        $("#type").val("全部").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
         
