@@ -315,4 +315,5 @@ function removeDuplicates(cards) {
 }
 
 // 監聽篩選條件變動，觸發篩選
+document.getElementById('filter-form').addEventListener('change', filterCards);
 attributeSelect.addEventListener("change", filterCards);
