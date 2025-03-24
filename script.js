@@ -125,12 +125,14 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
+        /*
         // 初始化類型
         $("#type").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
+        */
         // 初始化標籤
         $("#tag").select2({
             placeholder: "",
