@@ -64,6 +64,12 @@ function generateFilterOptions() {
         minimumResultsForSearch: Infinity,
         width: "100%"
     });
+    $("#type").on("select2:select", function() {
+        filterCards();
+    });
+    $("#type").on("select2:clear", function() {
+        filterCards();
+    });
     // 填充類型選項
     const allOption = new Option("全部","allOption");
     $("#type").append(allOption);
@@ -137,7 +143,10 @@ function generateFilterOptions() {
         // 初始化類型（在上方）
 
         // 監聽篩選條件變動，觸發篩選
-        $("#keyword, #type, #tag, #set").on("select2:select", function() {
+        $("#keyword, #tag, #set").on("select2:select", function() {
+            filterCards();
+        });
+        $("#keyword, #tag, #set").on("select2:clear", function() {
             filterCards();
         });
 
