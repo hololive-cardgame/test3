@@ -67,9 +67,6 @@ function generateFilterOptions() {
     $("#type").on("select2:select", function() {
         filterCards();
     });
-    $("#type").on("select2:clear", function() {
-        filterCards();
-    });
     // 填充類型選項
     const allOption = new Option("全部","allOption");
     $("#type").append(allOption);
@@ -133,8 +130,8 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {
-        // 初始化關鍵字、標籤、卡包
-        $("#keyword, #tag, #set").select2({
+        // 初始化關鍵字
+        $("#keyword").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
@@ -142,8 +139,32 @@ function generateFilterOptions() {
 
         // 初始化類型（在上方）
 
+        // 初始化標籤
+        $("#tag").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+
+        // 初始化卡包
+        $("#set").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+
         // 監聽篩選條件變動，觸發篩選
-        $("#keyword, #tag, #set").on("select2:select", function() {
+        $("#keyword").on("select2:select", function() {
+            filterCards();
+        });
+
+        // 監聽篩選條件變動，觸發篩選
+        $("#tag").on("select2:select", function() {
+            filterCards();
+        });
+
+        // 監聽篩選條件變動，觸發篩選
+        $("#set").on("select2:select", function() {
             filterCards();
         });
 
