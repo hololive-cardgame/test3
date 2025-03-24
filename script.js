@@ -2,6 +2,7 @@
 const attributeSelect = document.getElementById("attribute");  // 屬性
 const setSelect = document.getElementById("set");  // 卡包
 const clearFiltersBtn = document.getElementById("clear-filters");  // 清除篩選條件按鈕
+const cardContainer = document.getElementById("card-container");  // 卡牌展示區
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -253,4 +254,29 @@ clearFiltersBtn.addEventListener("click", () => {
         displayCards(cardsData);
     }
 });
+
+// 顯示卡牌
+function displayCards(cards) {
+    cardContainer.innerHTML = ""; // 清空現有卡牌
+
+    // 如果沒有卡牌，顯示提示訊息
+    if (cards.length === 0) {
+        cardContainer.innerHTML = "<p>沒有符合的卡牌。</p>";
+        return;
+    }
+
+    cards.forEach(card => {
+        const cardElement = document.createElement("div");
+        cardElement.classList.add("card");
+        cardElement.innerHTML = "
+            <img src="${card.image}" alt="${card.name}">
+        ";
+        // 點擊卡牌展示詳細資訊
+        cardElement.addEventListener("click", () => {
+            showCardModal(card);
+        });
+        cardContainer.appendChild(cardElement);
+    });
+}
+
 
