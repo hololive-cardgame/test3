@@ -261,7 +261,7 @@ function displayCards(cards) {
 
     // 如果沒有卡牌，顯示提示訊息
     if (cards.length === 0) {
-        cardContainer.innerHTML = "<p>沒有符合的卡牌。</p>";
+        cardContainer.innerHTML = '<p>沒有符合的卡牌。</p>';
         return;
     }
 
