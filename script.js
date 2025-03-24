@@ -1,7 +1,7 @@
 // 取得所有的篩選選單元素
 const attributeSelect = document.getElementById("attribute");  // 屬性
 const setSelect = document.getElementById("set");  // 卡包
-const clearFiltersBtn = document.getElementById('clear-filters');  // 清除篩選條件按鈕
+const clearFiltersBtn = document.getElementById("clear-filters");  // 清除篩選條件按鈕
 
 let filteredCards = [];  // 篩選後的卡牌資料
 
