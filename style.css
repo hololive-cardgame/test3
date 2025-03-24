@@ -22,6 +22,11 @@ main {
     padding: 10px;
 }
 
+.right-side {
+    width: 75%;
+    padding: 10px;
+}
+
 #filter-form {
     position: relative;
 }
@@ -73,4 +78,27 @@ main {
     background-color: #0006ff33;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 50%;
+}
+
+#card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 每行 5 張卡牌 */
+    gap: 20px;  /* 卡牌之間的間距 */
+    padding: 16px;  /* 容器內邊距 */
+    box-sizing: border-box;  /* 設定內邊距不影響寬度 */
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 120px;
+    height: 180px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
 }
