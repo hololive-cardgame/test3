@@ -59,7 +59,10 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-    $("#type").select2();
+    $("#type").select2({
+        minimumResultsForSearch: Infinity,
+        width: "100%"
+    });
     const allOption = new Option("全部","allOption",true,true);
     
     
