@@ -59,8 +59,9 @@ function generateFilterOptions() {
     });
 
     // 填充類型選項
-    const allOption = new Option("全部","allOption",true,true);
     $("#type").select2();
+    const allOption = new Option("全部","allOption",true,true);
+    $("#type").trigger("change");
     /*
     types.forEach(type => {
         if (type) {
