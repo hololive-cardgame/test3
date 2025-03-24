@@ -279,4 +279,45 @@ function displayCards(cards) {
     });
 }
 
+// 根據篩選條件顯示卡牌
+function filterCards() {
+    const keyword = $("#keyword").val().toLowerCase();
+    const type = $("#type").val();
+    const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);
+    const tag = $("#tag").val();
+    const set = $("#set").val();
 
+        filteredCards = cardsData.filter(card => {
+        const matchesKeyword = card.name.toLowerCase().includes(keyword);
+        const matchesType = type ? card.type === type : true;
+        const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);
+        // 處理 tag 的篩選
+        const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;
+        const matchesSet = set ? card.set === set : true;
+
+        return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet;
+    });
+
+    // 去重邏輯：基於卡牌的所有篩選條件去重
+    const uniqueCards = removeDuplicates(filteredCards);
+    
+    displayCards(uniqueCards);
+}
+
+// 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
+function removeDuplicates(cards) {
+    const seen = new Set();
+    const uniqueCards = [];
+
+    cards.forEach(card => {
+        // 使用一個唯一的識別符來檢查是否已經處理過該卡牌
+        const uniqueKey = `${card.name}-${card.type}-${card.attribute}-${card.tag}-${card.set}`;
+        
+        if (!seen.has(uniqueKey)) {
+            seen.add(uniqueKey);
+            uniqueCards.push(card);
+        }
+    });
+
+    return uniqueCards;
+}
