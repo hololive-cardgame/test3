@@ -135,20 +135,12 @@ function generateFilterOptions() {
         });
 
         // 初始化類型（在上方）
-        /*
-        // 初始化標籤
-        $("#tag").select2({
-            placeholder: "",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
+
+        // 監聽篩選條件變動，觸發篩選
+        $("#keyword, #type, #tag, #set").on("select2:select", function() {
+            filterCards();
         });
-        // 初始化卡包
-        $("#set").select2({
-            placeholder: "",
-            minimumResultsForSearch: Infinity,
-            width: "100%"
-        });
-        */
+
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
@@ -324,7 +316,3 @@ function removeDuplicates(cards) {
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
-
-$("#keyword, #type, #tag, #set").on("select2:select", function() {
-    filterCards();
-});
