@@ -49,19 +49,21 @@ main {
 
 #clear-keyword:hover, #clear-tag:hover, #clear-set:hover {
     background-color: #f0f0f0;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #clear-keyword {
     top: 17%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #clear-tag {
     top: 60%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #clear-set {
     top: 83%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -70,13 +72,13 @@ main {
     position: absolute;
     top: 1px;
     right: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow:hover {
     height: 26px;
     width: 26px;
     background-color: #0006ff33;
-    transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 50%;
 }
 
@@ -96,6 +98,12 @@ main {
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);  /* 當滑鼠懸停時向上移動 10px */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* 增強陰影，讓浮起效果更加顯著 */
 }
 
 .card img {
