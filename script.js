@@ -146,9 +146,6 @@ function generateFilterOptions() {
         $("#keyword, #tag, #set").on("select2:select", function() {
             filterCards();
         });
-        $("#keyword, #tag, #set").on("select2:clear", function() {
-            filterCards();
-        });
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
@@ -182,6 +179,8 @@ function generateFilterOptions() {
         
             // 隱藏清除按鈕
             $(this).hide();
+
+            filterCards();
         });
         
         $("#clear-tag").on("click", function() {
@@ -193,6 +192,8 @@ function generateFilterOptions() {
         
             // 隱藏清除按鈕
             $(this).hide();
+
+            filterCards();
         });
 
         $("#clear-set").on("click", function() {
@@ -204,6 +205,8 @@ function generateFilterOptions() {
         
             // 隱藏清除按鈕
             $(this).hide();
+
+            filterCards();
         });
 
         // 初始化清除按鈕狀態
