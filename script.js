@@ -127,15 +127,15 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {
-        // 初始化關鍵字
-        $("#keyword").select2({
+        // 初始化關鍵字、標籤、卡包
+        $("#keyword", "#tag", "#set").select2({
             placeholder: "",
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
 
         // 初始化類型（在上方）
-
+        /*
         // 初始化標籤
         $("#tag").select2({
             placeholder: "",
@@ -148,7 +148,7 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-
+        */
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
@@ -228,7 +228,7 @@ function generateFilterOptions() {
 clearFiltersBtn.addEventListener("click", () => {
     // 檢查是否有任何篩選條件被選擇
     const isAnyFilterSelected = $("#keyword").val() ||
-                                $("#type").val() ||
+                                $("#type").val() !== "allOption" ||
                                 Array.from(document.querySelectorAll('input[name="attribute"]')).some(checkbox => checkbox.checked) ||
                                 $("#tag").val() ||
                                 $("#set").val();
