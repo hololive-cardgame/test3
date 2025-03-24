@@ -61,6 +61,7 @@ function generateFilterOptions() {
     // 填充類型選項
     const allOption = new Option("全部","allOption",true,true);
     $("#type").select2();
+    /*
     types.forEach(type => {
         if (type) {
             const option = document.createElement("option");
@@ -69,6 +70,7 @@ function generateFilterOptions() {
             $("#type").append(option);
         }
     });
+    */
     
 
     // 清空屬性、多選框
