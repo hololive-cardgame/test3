@@ -342,6 +342,11 @@ function filterCards() {
     const uniqueCards = removeDuplicates(filteredCards);
     
     displayCards(uniqueCards);
+
+    // 如果篩選後沒有卡牌，則清空當前顯示的卡牌索引
+    if (uniqueCards.length === 0) {
+        currentCardIndex = -1;
+    }
 }
 
 // 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
@@ -419,9 +424,18 @@ function showPopup(card, index) {
     
     document.getElementById('popup').style.display = 'flex';
 
-    // 設定上一張和下一張按鈕的行為
-    prevButton.addEventListener('click', () => showPopup(cardsData[(currentCardIndex - 1 + cardsData.length) % cardsData.length], (currentCardIndex - 1 + cardsData.length) % cardsData.length));
-    nextButton.addEventListener('click', () => showPopup(cardsData[(currentCardIndex + 1) % cardsData.length], (currentCardIndex + 1) % cardsData.length));
+  // 設定上一張和下一張按鈕的行為
+    prevButton.addEventListener('click', () => {
+        // 在篩選後的卡牌中切換
+        const prevIndex = (currentCardIndex - 1 + filteredCards.length) % filteredCards.length;
+        showPopup(filteredCards[prevIndex], prevIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        // 在篩選後的卡牌中切換
+        const nextIndex = (currentCardIndex + 1) % filteredCards.length;
+        showPopup(filteredCards[nextIndex], nextIndex);
+    });
 }
 
 
