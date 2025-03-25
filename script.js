@@ -371,8 +371,8 @@ function showPopup(card) {
         return;
     }
     // 清空彈窗內容
-    popupleft.innerHTML = '';
-    popupright.innerHTML = '';
+    popupcontent.innerHTML = '';
+    // popupright.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
     const leftContent = document.createElement('div');
