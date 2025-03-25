@@ -372,13 +372,7 @@ function showPopup(card) {
         return;
     }
     
-       // 清空彈窗內容
-    while (popupleft.firstChild) {
-        popupleft.removeChild(popupleft.firstChild);
-    }
-    while (popupright.firstChild) {
-        popupright.removeChild(popupright.firstChild);
-    }
+    popupcontent.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
     const leftContent = document.createElement('div');
