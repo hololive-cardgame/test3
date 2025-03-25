@@ -111,3 +111,51 @@ main {
     width: 100%;
     height: auto;
 }
+
+/* 彈窗樣式 */
+.popup {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  max-width: 800px;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.popup-left img {
+  max-width: 200px;
+  max-height: 300px;
+}
+
+.popup-right {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-btn:hover {
+  color: #000;
+}
