@@ -362,10 +362,10 @@ function removeDuplicates(cards) {
 function showPopup(card) {
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
-    const popupleft = document.querySelector('.popup-left-content');
-    const popupright = document.querySelector('.popup-right-content');
+    const popupleft = document.querySelector('.popup-lef');
+    const popupright = document.querySelector('.popup-right');
     // 清空彈窗內容
-    // popupleft.innerHTML = '';
+    popupleft.innerHTML = '';
     popupright.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
