@@ -18,7 +18,7 @@ fetch("cards.json")
     .catch(error => {
         console.error("Error loading the card data:", error);
     });
-document.addEventListener('DOMContentLoaded', function() {
+
 // 根據 JSON 資料生成篩選選項
 function generateFilterOptions() {
     const keywords = new Set();
@@ -357,7 +357,7 @@ function removeDuplicates(cards) {
 
     return uniqueCards;
 }
-
+document.addEventListener('DOMContentLoaded', function() {
 // 顯示卡牌的詳細資訊
 function showPopup(card) {
     // 獲取彈窗內容區域
