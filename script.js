@@ -4,6 +4,7 @@ const setSelect = document.getElementById("set");  // 卡包
 const clearFiltersBtn = document.getElementById("clear-filters");  // 清除篩選條件按鈕
 const cardContainer = document.getElementById("card-container");  // 卡牌展示區
 
+let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 
 // 使用 fetch 從 JSON 檔案載入資料
@@ -356,6 +357,9 @@ function removeDuplicates(cards) {
 
     return uniqueCards;
 }
+
+// 顯示卡牌的詳細資訊
+
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
