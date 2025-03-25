@@ -391,8 +391,8 @@ function showPopup(card) {
         </div>`;
     }
 
-    popupContent.appendChild(leftContent);
-    popupContent.appendChild(rightContent);
+    popupcontent.appendChild(leftContent);
+    popupcontent.appendChild(rightContent);
     
     document.getElementById('popup').style.display = 'flex';
 }
