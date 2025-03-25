@@ -390,6 +390,10 @@ function showPopup(card) {
             <p><strong><span class="label">卡包</span></strong> ${card.set}</p>
         </div>`;
     }
+
+    popupContent.appendChild(leftContent);
+    popupContent.appendChild(rightContent);
+    
     document.getElementById('popup').style.display = 'flex';
 }
 
