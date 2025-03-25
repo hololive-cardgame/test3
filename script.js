@@ -411,12 +411,12 @@ function showPopup(card) {
     document.getElementById('popup').style.display = 'flex';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+
     document.getElementById('closePopup').addEventListener('click', function() {
         const popup = document.getElementById('popup');
         popup.style.display = 'none'; // 隱藏彈窗
     });
-});
+
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
