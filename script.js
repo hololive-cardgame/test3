@@ -299,7 +299,7 @@ function displayCards(cards) {
         `;
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            showCardModal(card);
+            showPopup(card);
         });
         cardContainer.appendChild(cardElement);
     });
@@ -359,7 +359,44 @@ function removeDuplicates(cards) {
 }
 
 // 顯示卡牌的詳細資訊
+function showPopup(card) {
+    // 獲取彈窗內容區域
+    const popupContent = document.getElementById('popupContent');
+    // 清空彈窗內容
+    popupContent.innerHTML = '';
 
+    // 創建左側區域 (顯示卡牌圖片)
+    const leftContent = document.createElement('div');
+    leftContent.className = 'popup-left';
+    leftContent.innerHTML = `
+        <img id="popupImage" src="${card.image}" alt="${card.name}">
+    `;
+
+    // 填充右側詳細資料
+    const rightContent = document.createElement('div');
+    rightContent.className = 'popup-right';
+    rightContent.innerHTML = `
+        <h2>${card.name}</h2>
+    `;
+
+    if (card.type === "主推") {
+        rightContent.innerHTML += `
+        <div id="popupOshiType">
+            <p><strong><span class="label">屬性</span></strong> ${card.attribute}</p>
+            <p><strong><span class="label">生命值</span></strong> ${card.life}</p>
+            <p><strong><span class="label skill">主推技能</span></strong> ${card.skill}</p>
+            <p><strong><span class="label spSkill">SP主推技能</span></strong> ${card.spSkill}</p>
+            <p><strong><span class="label id">卡牌編號</span></strong> ${card.id}</p>
+            <p><strong><span class="label">卡包</span></strong> ${card.set}</p>
+        </div>`;
+    }
+    document.getElementById('popup').style.display = 'block';
+}
+
+document.getElementById('closePopup').addEventListener('click', function() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none'; // 隱藏彈窗
+});
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
