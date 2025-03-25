@@ -406,22 +406,11 @@ function showPopup(card) {
     document.getElementById('popup').style.display = 'flex';
 }
 
-// 測試用數據
-  showPopup({
-    image: 'https://via.placeholder.com/300x200', // 測試圖片
-    name: '示範卡牌',
-    type: '主推',
-    attribute: '火焰',
-    life: '100',
-    skill: '火焰爆發',
-    spSkill: '爆裂火球',
-    id: '001',
-    set: '基本包'
-  });
-
-document.getElementById('closePopup').addEventListener('click', function() {
-  const popup = document.getElementById('popup');
-  popup.style.display = 'none'; // 隱藏彈窗
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('closePopup').addEventListener('click', function() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none'; // 隱藏彈窗
+    });
 });
 
 // 監聽篩選條件變動，觸發篩選
