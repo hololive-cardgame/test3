@@ -364,6 +364,12 @@ function showPopup(card) {
     const popupcontent = document.querySelector('.popup-content');
     const popupleft = document.querySelector('.popup-lef');
     const popupright = document.querySelector('.popup-right');
+
+    // Check if elements exist
+    if (!popupcontent || !popupleft || !popupright) {
+        console.error("Popup elements are not found in the DOM.");
+        return;
+    }
     // 清空彈窗內容
     popupleft.innerHTML = '';
     popupright.innerHTML = '';
