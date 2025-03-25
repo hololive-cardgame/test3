@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // 顯示卡牌的詳細資訊
 function showPopup(card) {
     // 獲取彈窗內容區域
-    const popupcontent = document.querySelector('popup-content');
+    const popupcontent = document.querySelector('.popup-content');
     // 清空彈窗內容
     popupcontent.innerHTML = '';
 
