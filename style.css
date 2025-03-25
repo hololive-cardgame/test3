@@ -112,52 +112,52 @@ main {
     height: auto;
 }
 
-/* 彈窗背景 */
+/* 彈窗背景樣式 */
 .popup {
-  display: none; /* 預設隱藏 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 背景為半透明黑 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-/* 彈窗內容 */
+/* 彈窗內容區域 */
 .popup-content {
-  display: flex;
-  background-color: white;
-  padding: 20px;
-  max-width: 800px;
-  max-height: 80%;
-  overflow: auto;
-  position: relative;
-  border-radius: 8px;
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    max-width: 800px;
+    max-height: 600px;
+    overflow: auto;
+    border-radius: 8px;
+    position: relative; /* 這是關鍵，讓關閉按鈕能絕對定位 */
 }
 
-/* 彈窗左側圖片 */
-.popup-left img {
-  max-width: 200px;
-  max-height: 300px;
+/* 左側顯示卡牌圖片 */
+.popup-left {
+    flex: 1;
+    padding-right: 20px;
 }
 
-/* 彈窗右側文本 */
+/* 右側顯示詳細資料 */
 .popup-right {
-  margin-left: 20px;
-  flex: 1;
+    flex: 2;
 }
 
 /* 關閉按鈕 */
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    z-index: 10000; /* 確保關閉按鈕在最上層 */
 }
 
 .close-btn:hover {
