@@ -362,17 +362,21 @@ function removeDuplicates(cards) {
 function showPopup(card) {
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
-    const popupleft = document.querySelector('.popup-left');
-    const popupright = document.querySelector('.popup-right');
+    // const popupleft = document.querySelector('.popup-left');
+    // const popupright = document.querySelector('.popup-right');
     const closeButton = document.getElementById('closePopup');
+    const popupright = document.getElementById('popupr');
+    const popupleft = document.getElementById('popupl');
+    
 
     // Check if elements exist
-    if (!popupcontent || !popupleft || !popupright) {
+    if (!popupr || !popupl) {
         console.error("Popup elements are not found in the DOM.");
         return;
     }
     
-    popupcontent.innerHTML = '';
+    popupright.innerHTML = '';
+    popupleft.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
     const leftContent = document.createElement('div');
@@ -400,8 +404,8 @@ function showPopup(card) {
         </div>`;
     }
 
-    popupcontent.appendChild(leftContent);
-    popupcontent.appendChild(rightContent);
+    popupleft.appendChild(leftContent);
+    popupright.appendChild(rightContent);
     
     document.getElementById('popup').style.display = 'flex';
 }
