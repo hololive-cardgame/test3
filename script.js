@@ -397,7 +397,7 @@ document.getElementById('closePopup').addEventListener('click', function() {
   const popup = document.getElementById('popup');
   popup.style.display = 'none'; // 隱藏彈窗
 });
-}
+});
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
