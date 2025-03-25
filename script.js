@@ -410,12 +410,6 @@ function showPopup(card) {
     set: '基本包'
   });
 
-  // 測試用關閉彈窗
-  document.getElementById('closePopup').addEventListener('click', function() {
-    const popup = document.getElementById('popup');
-    popup.style.display = 'none'; // 隱藏彈窗
-  });
-
 document.getElementById('closePopup').addEventListener('click', function() {
   const popup = document.getElementById('popup');
   popup.style.display = 'none'; // 隱藏彈窗
