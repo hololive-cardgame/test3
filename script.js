@@ -373,11 +373,13 @@ function showPopup(card) {
     }
     
     // 先提取關閉按鈕，然後清空整個彈窗內容
-    const closeButtonClone = closeButton.cloneNode(true);  // 克隆關閉按鈕
-    popupcontent.innerHTML = '';  // 清空整個 popup-content 內容
+    // const closeButtonClone = closeButton.cloneNode(true);  // 克隆關閉按鈕
+    // popupcontent.innerHTML = '';  // 清空整個 popup-content 內容
+    popupright.innerHTML = '';
+    popupleft.innerHTML = '';
 
     // 把克隆的關閉按鈕重新加回來
-    popupcontent.appendChild(closeButtonClone);
+    // popupcontent.appendChild(closeButtonClone);
 
     // 創建左側區域 (顯示卡牌圖片)
     const leftContent = document.createElement('div');
