@@ -112,7 +112,7 @@ main {
     height: auto;
 }
 
-/* 彈窗樣式 */
+/* 彈窗背景 */
 .popup {
   display: none; /* 預設隱藏 */
   position: fixed;
@@ -120,33 +120,37 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
   z-index: 1000;
+  align-items: center;
+  justify-content: center;
 }
 
+/* 彈窗內容 */
 .popup-content {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   max-width: 800px;
   max-height: 80%;
   overflow: auto;
+  position: relative;
+  border-radius: 8px;
 }
 
+/* 彈窗左側圖片 */
 .popup-left img {
   max-width: 200px;
   max-height: 300px;
 }
 
+/* 彈窗右側文本 */
 .popup-right {
   margin-left: 20px;
   flex: 1;
 }
 
+/* 關閉按鈕 */
 .close-btn {
   position: absolute;
   top: 10px;
