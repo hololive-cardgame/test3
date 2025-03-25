@@ -7,6 +7,9 @@ const cardContainer = document.getElementById("card-container");  // 卡牌展�
 let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 
+// 新增一個變數來記錄當前顯示的卡牌索引
+let currentCardIndex = -1; // 初始為-1，表示未選擇卡牌
+
 // 使用 fetch 從 JSON 檔案載入資料
 fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
@@ -291,15 +294,16 @@ function displayCards(cards) {
         return;
     }
 
-    cards.forEach(card => {
+    cards.forEach((card, index) => {
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
         cardElement.innerHTML = `
             <img src="${card.image}" alt="${card.name}">
         `;
+        
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            showPopup(card);
+            showPopup(card, index);
         });
         cardContainer.appendChild(cardElement);
     });
@@ -359,7 +363,7 @@ function removeDuplicates(cards) {
 }
 
 // 顯示卡牌的詳細資訊
-function showPopup(card) {
+function showPopup(card, index) {
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
@@ -368,6 +372,11 @@ function showPopup(card) {
     const closeButton = document.getElementById('closePopup');
     const popupright = document.getElementById('popupr');
     const popupleft = document.getElementById('popupl');
+    const prevButton = document.getElementById('arrowLeft'); // 上一張按鈕
+    const nextButton = document.getElementById('arrowRight'); // 下一張按鈕
+
+    // 更新當前顯示的卡牌索引
+    currentCardIndex = index;
     
 
     // Check if elements exist
@@ -409,6 +418,10 @@ function showPopup(card) {
     popupright.appendChild(rightContent);
     
     document.getElementById('popup').style.display = 'flex';
+
+    // 設定上一張和下一張按鈕的行為
+    prevButton.addEventListener('click', () => showPopup(cardsData[(currentCardIndex - 1 + cardsData.length) % cardsData.length], (currentCardIndex - 1 + cardsData.length) % cardsData.length));
+    nextButton.addEventListener('click', () => showPopup(cardsData[(currentCardIndex + 1) % cardsData.length], (currentCardIndex + 1) % cardsData.length));
 }
 
 
