@@ -365,7 +365,7 @@ function showPopup(card) {
     const popupleft = document.querySelector('.popup-left-content');
     const popupright = document.querySelector('.popup-right-content');
     // 清空彈窗內容
-    popupleft.innerHTML = '';
+    // popupleft.innerHTML = '';
     popupright.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
