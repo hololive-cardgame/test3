@@ -390,7 +390,7 @@ function showPopup(card) {
             <p><strong><span class="label">卡包</span></strong> ${card.set}</p>
         </div>`;
     }
-    document.getElementById('popup').style.display = 'block';
+    document.getElementById('popup').style.display = 'flex';
 }
 
 document.getElementById('closePopup').addEventListener('click', function() {
