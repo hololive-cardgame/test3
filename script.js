@@ -306,20 +306,30 @@ function displayCards(cards) {
 
 // 根據篩選條件顯示卡牌
 function filterCards() {
-    const keyword = $("#keyword").val();
-    const type = $("#type").val();
-    const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);
-    const tag = $("#tag").val();
-    const set = $("#set").val();
+    // 獲取篩選條件
+    const keyword = $("#keyword").val();  // 關鍵字
+    const type = $("#type").val();  // 類型
+    const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);  // 屬性篩選
+    const tag = $("#tag").val();  // 標籤篩選
+    const set = $("#set").val();  // 卡包篩選
 
-        filteredCards = cardsData.filter(card => {
-        const matchesKeyword = card.name.toLowerCase().includes(keyword);
-        const matchesType = type ? card.type === type : true;
-        const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);
-        // 處理 tag 的篩選
-        const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;
-        const matchesSet = set ? card.set === set : true;
+    console.log('篩選條件:');
+    console.log('關鍵字:', keyword);
+    console.log('類型:', type);
+    console.log('屬性:', selectedAttributes);
+    console.log('標籤:', tag);
+    console.log('卡包:', set);
 
+    // 根據篩選條件篩選卡牌
+    filteredCards = cardsData.filter(card => {
+        // 逐個條件篩選
+        const matchesKeyword = keyword ? card.name.toLowerCase().includes(keyword.toLowerCase()) : true;  // 如果 keyword 不為空，則篩選符合關鍵字的卡牌
+        const matchesType = type && type !== "allOption" ? card.type === type : true;  // 類型選擇框預設為 "allOption"，如果不為空則篩選
+        const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
+        const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
+        const matchesSet = set ? card.set === set : true;  // 卡包篩選
+
+        // 返回符合所有條件的卡牌
         return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet;
     });
 
