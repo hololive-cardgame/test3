@@ -163,3 +163,30 @@ main {
 .close-btn:hover {
   color: #000;
 }
+
+/* 左右箭頭樣式 */
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  fill: white;  /* 設定箭頭顏色為白色 */
+  background-color: red;
+  border-radius: 50%;
+  padding: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+.arrow-left:hover, .arrow-right:hover {
+  background-color: darkred;
+}
+
+.arrow-left {
+  left: 10px;  /* 左側箭頭的位置 */
+}
+
+.arrow-right {
+  right: 10px;  /* 右側箭頭的位置 */
+}
