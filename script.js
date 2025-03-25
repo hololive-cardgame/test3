@@ -361,9 +361,9 @@ function removeDuplicates(cards) {
 // 顯示卡牌的詳細資訊
 function showPopup(card) {
     // 獲取彈窗內容區域
-    const popup-content = document.querySelector('popup-content');
+    const popupcontent = document.querySelector('popup-content');
     // 清空彈窗內容
-    popup-content.innerHTML = '';
+    popupcontent.innerHTML = '';
 
     // 創建左側區域 (顯示卡牌圖片)
     const leftContent = document.createElement('div');
