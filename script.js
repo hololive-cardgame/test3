@@ -7,9 +7,6 @@ const cardContainer = document.getElementById("card-container");  // 卡牌展�
 let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 
-// 新增一個變數來記錄當前顯示的卡牌索引
-let currentCardIndex = -1; // 初始為-1，表示未選擇卡牌
-
 // 使用 fetch 從 JSON 檔案載入資料
 fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
@@ -294,7 +291,7 @@ function displayCards(cards) {
         return;
     }
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
         cardElement.innerHTML = `
@@ -303,7 +300,7 @@ function displayCards(cards) {
         
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            showPopup(card, index);
+            showPopup(card);
         });
         cardContainer.appendChild(cardElement);
     });
@@ -342,11 +339,6 @@ function filterCards() {
     const uniqueCards = removeDuplicates(filteredCards);
     
     displayCards(uniqueCards);
-
-    // 如果篩選後沒有卡牌，則清空當前顯示的卡牌索引
-    if (uniqueCards.length === 0) {
-        currentCardIndex = -1;
-    }
 }
 
 // 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
@@ -368,7 +360,7 @@ function removeDuplicates(cards) {
 }
 
 // 顯示卡牌的詳細資訊
-function showPopup(card, index) {
+function showPopup(card) {
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
@@ -377,12 +369,6 @@ function showPopup(card, index) {
     const closeButton = document.getElementById('closePopup');
     const popupright = document.getElementById('popupr');
     const popupleft = document.getElementById('popupl');
-    const prevButton = document.getElementById('arrowLeft'); // 上一張按鈕
-    const nextButton = document.getElementById('arrowRight'); // 下一張按鈕
-
-    // 更新當前顯示的卡牌索引
-    currentCardIndex = index;
-    
 
     // Check if elements exist
     if (!popupr || !popupl) {
@@ -423,22 +409,7 @@ function showPopup(card, index) {
     popupright.appendChild(rightContent);
     
     document.getElementById('popup').style.display = 'flex';
-
-  // 設定上一張和下一張按鈕的行為
-    prevButton.addEventListener('click', () => {
-        // 在篩選後的卡牌中切換
-        const prevIndex = (currentCardIndex - 1 + filteredCards.length) % filteredCards.length;
-        showPopup(filteredCards[prevIndex], prevIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        // 在篩選後的卡牌中切換
-        const nextIndex = (currentCardIndex + 1) % filteredCards.length;
-        showPopup(filteredCards[nextIndex], nextIndex);
-    });
 }
-
-
     document.getElementById('closePopup').addEventListener('click', function() {
         const popup = document.getElementById('popup');
         popup.style.display = 'none'; // 隱藏彈窗
