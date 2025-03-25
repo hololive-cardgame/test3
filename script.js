@@ -362,7 +362,7 @@ function removeDuplicates(cards) {
 function showPopup(card) {
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
-    const popupleft = document.querySelector('.popup-lef');
+    const popupleft = document.querySelector('.popup-left');
     const popupright = document.querySelector('.popup-right');
 
     // Check if elements exist
