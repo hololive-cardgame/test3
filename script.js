@@ -4,10 +4,6 @@ const setSelect = document.getElementById("set");  // 卡包
 const clearFiltersBtn = document.getElementById("clear-filters");  // 清除篩選條件按鈕
 const cardContainer = document.getElementById("card-container");  // 卡牌展示區
 
-const popupcontent = document.querySelector('.popup-content');
-    const popupleft = document.querySelector('.popup-lef');
-    const popupright = document.querySelector('.popup-right');
-
 let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 
@@ -365,7 +361,9 @@ function removeDuplicates(cards) {
 // 顯示卡牌的詳細資訊
 function showPopup(card) {
     // 獲取彈窗內容區域
-    
+    const popupcontent = document.querySelector('popup-content');
+    const popupleft = document.querySelector('popup-lef');
+    const popupright = document.querySelector('popup-right');
 
     // Check if elements exist
     if (!popupcontent || !popupleft || !popupright) {
