@@ -127,7 +127,7 @@ main {
 }
 
 /* 彈窗內容 */
-#popupContent {
+.popup-content {
   display: flex;
   background-color: white;
   padding: 20px;
