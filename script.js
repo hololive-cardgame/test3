@@ -357,7 +357,7 @@ function removeDuplicates(cards) {
 
     return uniqueCards;
 }
-document.addEventListener('DOMContentLoaded', function() {
+
 // 顯示卡牌的詳細資訊
 function showPopup(card) {
     // 獲取彈窗內容區域
@@ -396,7 +396,6 @@ function showPopup(card) {
 document.getElementById('closePopup').addEventListener('click', function() {
   const popup = document.getElementById('popup');
   popup.style.display = 'none'; // 隱藏彈窗
-});
 });
 
 // 監聽篩選條件變動，觸發篩選
