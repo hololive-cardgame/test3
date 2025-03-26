@@ -348,8 +348,10 @@ function filterCards() {
 
     // 去重邏輯：基於卡牌的所有篩選條件去重
     const uniqueCards = removeDuplicates(filteredCards);
+
+    filteredCards = uniqueCards;
     
-    displayCards(uniqueCards);
+    displayCards(filteredCards);
 }
 
 // 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
