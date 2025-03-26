@@ -384,7 +384,7 @@ function showPopup(card, index) {
     const popupcontent = document.querySelector('.popup-content');
     // const popupleft = document.querySelector('.popup-left');
     // const popupright = document.querySelector('.popup-right');
-    const closeButton = document.getElementById('closePopup');
+    7const closeButton = document.getElementById('closePopup');
     const popupright = document.getElementById('popupr');
     const popupleft = document.getElementById('popupl');
 
@@ -430,15 +430,15 @@ function showPopup(card, index) {
 
     // 設置左右箭頭的事件，基於篩選後的cards
     document.getElementById('arrowLeft').onclick = () => {
-    const previousIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
+    const previousIndex = (currentIndex - 1 + cardsData.length) % cardsData.length;  // 處理循環
         currentIndex = previousIndex;  // Update the current index
-    showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
+    showPopup(cardsData[previousIndex], previousIndex);  // 顯示上一張卡牌
 };
 
 document.getElementById('arrowRight').onclick = () => {
-    const nextIndex = (currentIndex + 1) % filteredCards.length;  // 處理循環
+    const nextIndex = (currentIndex + 1) % cardsData.length;  // 處理循環
     currentIndex = nextIndex;  // Update the current index
-    showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
+    showPopup(cardsData[nextIndex], nextIndex);  // 顯示下一張卡牌
 };
 
 }
