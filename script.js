@@ -455,3 +455,24 @@ document.getElementById('arrowRight').onclick = () => {
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
+
+// 滾動事件處理函數，固定分組標籤
+window.addEventListener("scroll", function() {
+    const labels = document.querySelectorAll("optgroup");
+    
+    // 確保每個分組的標籤會隨著滾動而固定
+    labels.forEach(label => {
+        const rect = label.getBoundingClientRect();  // 獲取標籤的位置
+        const labelElement = label.previousElementSibling;  // 取得對應的標籤元素
+
+        if (rect.top <= 0 && rect.bottom >= 0) {
+            // 當標籤達到上方時，將它設為固定定位
+            labelElement.style.position = "fixed";
+            labelElement.style.top = "0";
+            labelElement.style.zIndex = "9999";
+        } else {
+            // 否則，它保持在原始流中
+            labelElement.style.position = "relative";
+        }
+    });
+});
