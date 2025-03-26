@@ -7,8 +7,6 @@ const cardContainer = document.getElementById("card-container");  // 卡牌展�
 let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 let currentIndex = -1;  // 當前顯示的卡牌索引
-let currentPage = 1;  // 當前頁數
-const cardsPerPage = 10;  // 每頁顯示的卡片數量
 
 // 使用 fetch 從 JSON 檔案載入資料
 fetch("cards.json")
@@ -290,13 +288,6 @@ clearFiltersBtn.addEventListener("click", () => {
 function displayCards(cards) {
     cardContainer.innerHTML = ""; // 清空現有卡牌
 
-    // 計算總頁數
-    const totalPages = Math.ceil(cards.length / cardsPerPage);
-    // 根據當前頁數，選擇要顯示的卡片範圍
-    const startIndex = (currentPage - 1) * cardsPerPage;
-    const endIndex = Math.min(startIndex + cardsPerPage, cards.length);
-    const cardsToDisplay = cards.slice(startIndex, endIndex);
-
     // 如果沒有卡牌，顯示提示訊息
     if (cards.length === 0) {
         cardContainer.innerHTML = '<p>沒有符合的卡牌。</p>';
@@ -324,39 +315,6 @@ function displayCards(cards) {
         });
         cardContainer.appendChild(cardElement);
     });
-    displayPagination(totalPages);
-}
-
-// 顯示分頁按鈕
-function displayPagination(totalPages) {
-    const paginationContainer = document.getElementById("pagination");
-
-    // 清空現有的分頁按鈕
-    paginationContainer.innerHTML = "";
-
-    // 如果是第一頁，上一頁按鈕應該禁用
-    const prevButton = document.createElement("button");
-    prevButton.textContent = "上一頁";
-    prevButton.disabled = currentPage === 1;
-    prevButton.addEventListener("click", () => {
-        if (currentPage > 1) {
-            currentPage--;
-            filterCards();  // 根據篩選條件更新卡牌顯示
-        }
-    });
-    paginationContainer.appendChild(prevButton);
-
-    // 如果當前頁不是最後一頁，則顯示下一頁按鈕
-    const nextButton = document.createElement("button");
-    nextButton.textContent = "下一頁";
-    nextButton.disabled = currentPage === totalPages;
-    nextButton.addEventListener("click", () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            filterCards();  // 根據篩選條件更新卡牌顯示
-        }
-    });
-    paginationContainer.appendChild(nextButton);
 }
 
 // 根據篩選條件顯示卡牌
