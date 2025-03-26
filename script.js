@@ -384,7 +384,7 @@ function showPopup(card, index) {
     const popupcontent = document.querySelector('.popup-content');
     // const popupleft = document.querySelector('.popup-left');
     // const popupright = document.querySelector('.popup-right');
-    7const closeButton = document.getElementById('closePopup');
+    const closeButton = document.getElementById('closePopup');
     const popupright = document.getElementById('popupr');
     const popupleft = document.getElementById('popupl');
 
