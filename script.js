@@ -8,6 +8,9 @@ let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
 let currentIndex = -1;  // 當前顯示的卡牌索引
 
+const cardsPerPage = 10;  // 設置每頁顯示的卡牌數量
+let currentPage = 0;  // 初始頁面是第一頁
+
 // 使用 fetch 從 JSON 檔案載入資料
 fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
@@ -288,33 +291,61 @@ clearFiltersBtn.addEventListener("click", () => {
 function displayCards(cards) {
     cardContainer.innerHTML = ""; // 清空現有卡牌
 
+    // Calculate the start and end index for the current page
+    const startIndex = currentPage * cardsPerPage;
+    const endIndex = Math.min(startIndex + cardsPerPage, cards.length);
+
     // 如果沒有卡牌，顯示提示訊息
     if (cards.length === 0) {
         cardContainer.innerHTML = '<p>沒有符合的卡牌。</p>';
         return;
     }
 
-    cards.forEach((card, index) => {
-        
+    for (let i = startIndex; i < endIndex; i++) {
+        const card = cards[i];
         console.log(card);  // Log the card object to inspect its properties
-
         if (!card.image) {
             console.error(`Card at index ${index} is missing an image property`);
             return;
         }
+
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
         cardElement.innerHTML = `
             <img src="${card.image}" alt="${card.name}">
         `;
-        
+
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
             currentIndex = index;  // Update the current index
             showPopup(card, currentIndex);
         });
         cardContainer.appendChild(cardElement);
-    });
+    }
+    // Generate pagination controls
+    generatePaginationControls(cards.length);
+}
+
+// Function to generate pagination controls
+function generatePaginationControls(totalCards) {
+    const totalPages = Math.ceil(totalCards / cardsPerPage);
+    const paginationContainer = document.getElementById("pagination");
+    paginationContainer.innerHTML = ""; // Clear existing pagination controls
+
+    // Create pagination buttons
+    for (let i = 0; i < totalPages; i++) {
+        const pageButton = document.createElement("button");
+        pageButton.textContent = i + 1;
+        pageButton.classList.add("pagination-button");
+        if (i === currentPage) {
+            pageButton.classList.add("active");
+        }
+        pageButton.addEventListener("click", () => {
+            currentPage = i;
+            displayCards(filteredCards); // Update the displayed cards when a page button is clicked
+        });
+        paginationContainer.appendChild(pageButton);
+    }
 }
 
 // 根據篩選條件顯示卡牌
@@ -350,6 +381,8 @@ function filterCards() {
     const uniqueCards = removeDuplicates(filteredCards);
 
     filteredCards = uniqueCards;
+
+    currentPage = 0;
     
     displayCards(filteredCards);
 }
