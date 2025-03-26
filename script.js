@@ -469,7 +469,7 @@ function filterCards() {
         const matchesSet = set ? card.set === set : true;  // 卡包篩選
 
         // 返回符合所有條件的卡牌
-        return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet && ; // matchesLevel
+        return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet; // matchesLevel
     });
 
     // 去重邏輯：基於卡牌的所有篩選條件去重
