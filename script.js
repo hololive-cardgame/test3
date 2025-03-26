@@ -330,11 +330,7 @@ function displayCards(cards) {
 function generatePaginationControls(totalCards) {
     const totalPages = Math.ceil(totalCards / cardsPerPage);
     const paginationContainer = document.getElementById("pagination");
-    const prevPageBtn = document.getElementById("prevPage");
-    const nextPageBtn = document.getElementById("nextPage");
-    
     paginationContainer.innerHTML = ""; // Clear existing pagination controls
-    paginationContainer.appendChild(prevPageBtn); // Add previous button
 
     // Create pagination buttons
     for (let i = 0; i < totalPages; i++) {
@@ -350,28 +346,7 @@ function generatePaginationControls(totalCards) {
         });
         paginationContainer.appendChild(pageButton);
     }
-     paginationContainer.appendChild(nextPageBtn); // Add next button
-
-    // Update button states
-    prevPageBtn.disabled = currentPage === 0;
-    nextPageBtn.disabled = currentPage === totalPages - 1;
 }
-
-// Event listeners for pagination arrows
-document.getElementById("prevPage").addEventListener("click", () => {
-    if (currentPage > 0) {
-        currentPage--;
-        displayCards(filteredCards);
-    }
-});
-
-document.getElementById("nextPage").addEventListener("click", () => {
-    const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
-    if (currentPage < totalPages - 1) {
-        currentPage++;
-        displayCards(filteredCards);
-    }
-});
 
 // 根據篩選條件顯示卡牌
 function filterCards() {
