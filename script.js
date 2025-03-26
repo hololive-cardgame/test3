@@ -332,8 +332,55 @@ function generatePaginationControls(totalCards) {
     const paginationContainer = document.getElementById("pagination");
     paginationContainer.innerHTML = ""; // Clear existing pagination controls
 
+    const maxPageButtons = 5;  // 最多顯示的頁碼數量（不包括省略號）
+
+    // 計算顯示頁碼的範圍
+    let startPage, endPage;
+
+    if (totalPages <= maxPageButtons) {
+        // 如果頁碼總數小於最大頁碼顯示數量，顯示所有頁碼
+        startPage = 0;
+        endPage = totalPages;
+    } else {
+        // 如果頁碼總數大於最大頁碼顯示數量，顯示目前頁碼附近的頁碼
+        if (currentPage < maxPageButtons - 2) {
+            // 當前頁處於前面，顯示前幾頁+省略號
+            startPage = 0;
+            endPage = maxPageButtons;
+        } else if (currentPage > totalPages - maxPageButtons + 2) {
+            // 當前頁處於後面，顯示後幾頁+省略號
+            startPage = totalPages - maxPageButtons;
+            endPage = totalPages;
+        } else {
+            // 中間部分，顯示前後各兩頁，並加上省略號
+            startPage = currentPage - 2;
+            endPage = currentPage + 3;
+        }
+    }
+
+    // Add left arrow if not on the first page
+    if (currentPage > 0) {
+        const leftArrow = document.createElement("div");
+        leftArrow.textContent = "<";
+        leftArrow.classList.add("pagination-arrow");
+        leftArrow.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                displayCards(filteredCards); // Update the displayed cards
+            }
+        });
+        paginationContainer.appendChild(leftArrow);
+    }
+
+    // 如果沒有顯示第一頁和省略號，添加省略號
+    if (startPage > 1) {
+        const ellipsisButton = document.createElement("span");
+        ellipsisButton.textContent = "...";
+        paginationContainer.appendChild(ellipsisButton);
+    }
+
     // Create pagination buttons
-    for (let i = 0; i < totalPages; i++) {
+    for (let i = startPage; i < endPage; i++) {
         const pageButton = document.createElement("div");
         pageButton.textContent = i + 1;
         pageButton.classList.add("pagination-button");
@@ -345,6 +392,27 @@ function generatePaginationControls(totalCards) {
             displayCards(filteredCards); // Update the displayed cards when a page button is clicked
         });
         paginationContainer.appendChild(pageButton);
+    }
+
+    // 如果沒有顯示最後一頁和省略號，添加省略號
+    if (endPage < totalPages) {
+        const ellipsisButton = document.createElement("span");
+        ellipsisButton.textContent = "...";
+        paginationContainer.appendChild(ellipsisButton);
+    }
+
+    // Add right arrow if not on the last page
+    if (currentPage < totalPages - 1) {
+        const rightArrow = document.createElement("div");
+        rightArrow.textContent = ">";
+        rightArrow.classList.add("pagination-arrow");
+        rightArrow.addEventListener("click", () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                displayCards(filteredCards); // Update the displayed cards
+            }
+        });
+        paginationContainer.appendChild(rightArrow);
     }
 }
 
