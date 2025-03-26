@@ -358,7 +358,7 @@ function generatePaginationControls(totalCards) {
         }
     }
 
-    // Add left arrow if not on the first page
+    // Add left arrow even on the first page
         const leftArrow = document.createElement("div");
         leftArrow.textContent = "<";
         leftArrow.classList.add("pagination-arrow");
@@ -411,19 +411,21 @@ document.head.appendChild(style);
         paginationContainer.appendChild(ellipsisButton);
     }
 
-    // Add right arrow if not on the last page
-    if (currentPage < totalPages - 1) {
+    // Add right arrow even on the last page
+
         const rightArrow = document.createElement("div");
         rightArrow.textContent = ">";
         rightArrow.classList.add("pagination-arrow");
+    if (currentPage < totalPages - 1) {
         rightArrow.addEventListener("click", () => {
-            if (currentPage < totalPages - 1) {
                 currentPage++;
                 displayCards(filteredCards); // Update the displayed cards
-            }
         });
+        } else {
+        rightArrow.classList.add("disabled"); // Add a class to indicate it's disabled
+        }
         paginationContainer.appendChild(rightArrow);
-    }
+    
 }
 
 // 根據篩選條件顯示卡牌
