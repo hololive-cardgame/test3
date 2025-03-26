@@ -361,6 +361,11 @@ function removeDuplicates(cards) {
 
 // 顯示卡牌的詳細資訊
 function showPopup(card, index) {
+    if (!card || !card.image) {
+        console.error("Card or card image is undefined.");
+        return;
+    }
+    
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
