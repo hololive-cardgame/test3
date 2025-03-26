@@ -292,6 +292,13 @@ function displayCards(cards) {
     }
 
     cards.forEach((card, index) => {
+        
+        console.log(card);  // Log the card object to inspect its properties
+
+        if (!card.image) {
+            console.error(`Card at index ${index} is missing an image property`);
+            return;
+        }
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
         cardElement.innerHTML = `
