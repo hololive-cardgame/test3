@@ -365,6 +365,8 @@ function showPopup(card, index) {
         console.error("Card or card image is undefined.");
         return;
     }
+
+    const imageUrl = card.image ? card.image : 'path/to/placeholder/image.png'; // Fallback image URL
     
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
