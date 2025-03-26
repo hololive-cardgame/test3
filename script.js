@@ -291,7 +291,7 @@ function displayCards(cards) {
         return;
     }
 
-    cards.forEach((card) => {
+    cards.forEach((card, index) => {
         const cardElement = document.createElement("div");
         cardElement.classList.add("card");
         cardElement.innerHTML = `
@@ -300,7 +300,7 @@ function displayCards(cards) {
         
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            showPopup(card);
+            showPopup(card, index);
         });
         cardContainer.appendChild(cardElement);
     });
@@ -336,9 +336,9 @@ function filterCards() {
     });
 
     // 去重邏輯：基於卡牌的所有篩選條件去重
-    const uniqueCards = removeDuplicates(filteredCards);
+    filteredCards = removeDuplicates(filteredCards);
     
-    displayCards(uniqueCards);
+    displayCards(filteredCards);
 }
 
 // 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
@@ -360,7 +360,7 @@ function removeDuplicates(cards) {
 }
 
 // 顯示卡牌的詳細資訊
-function showPopup(card) {
+function showPopup(card, index) {
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
     const popupcontent = document.querySelector('.popup-content');
@@ -409,6 +409,18 @@ function showPopup(card) {
     popupright.appendChild(rightContent);
     
     document.getElementById('popup').style.display = 'flex';
+
+    // 設置左右箭頭的事件，基於篩選後的cards
+    document.getElementById('arrowLeft').addEventListener('click', () => {
+        const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
+        showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
+    });
+
+    document.getElementById('arrowRight').addEventListener('click', () => {
+        const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
+        showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
+    });
+    
 }
     document.getElementById('closePopup').addEventListener('click', function() {
         const popup = document.getElementById('popup');
