@@ -416,15 +416,15 @@ function showPopup(card, index) {
     document.getElementById('popup').style.display = 'flex';
 
     // 設置左右箭頭的事件，基於篩選後的cards
-    document.getElementById('arrowLeft').onclick  () => {
-        const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
-        showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
-    };
+    document.getElementById('arrowLeft').onclick = () => {
+    const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
+    showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
+};
 
-    document.getElementById('arrowRight').onclick  () => {
-        const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
-        showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
-    };
+document.getElementById('arrowRight').onclick = () => {
+    const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
+    showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
+};
 
 }
 
