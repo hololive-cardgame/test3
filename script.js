@@ -359,18 +359,28 @@ function generatePaginationControls(totalCards) {
     }
 
     // Add left arrow if not on the first page
-    if (currentPage > 0) {
         const leftArrow = document.createElement("div");
         leftArrow.textContent = "<";
         leftArrow.classList.add("pagination-arrow");
+    if (currentPage > 0) {
         leftArrow.addEventListener("click", () => {
-            if (currentPage > 0) {
                 currentPage--;
                 displayCards(filteredCards); // Update the displayed cards
-            }
         });
-        paginationContainer.appendChild(leftArrow);
+    } else{
+        leftArrow.classList.add("disabled"); // Add a class to indicate it's disabled
     }
+        paginationContainer.appendChild(leftArrow);
+    
+    // CSS to visually indicate the arrow is disabled
+const style = document.createElement('style');
+style.innerHTML = `
+.pagination-arrow.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+`;
+document.head.appendChild(style);
 
     // 如果沒有顯示第一頁和省略號，添加省略號
     if (startPage > 1) {
