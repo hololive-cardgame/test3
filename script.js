@@ -42,6 +42,11 @@ function generateFilterOptions() {
         keywords.add(card.name);
         types.add(card.type);
         attributes.add(card.attribute);
+        /*
+        if (card.attribute) {
+            card.attribute.split(" / ").forEach(attr => attributes.add(attr));
+        }
+        */
         if (card.tag) {
             card.tag.split(" / ").forEach(tag => tags.add(tag));
         }
@@ -457,12 +462,14 @@ function filterCards() {
         // 逐個條件篩選
         const matchesKeyword = keyword ? card.name.toLowerCase().includes(keyword.toLowerCase()) : true;  // 如果 keyword 不為空，則篩選符合關鍵字的卡牌
         const matchesType = type && type !== "allOption" ? card.type === type : true;  // 類型選擇框預設為 "allOption"，如果不為空則篩選
+        // const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.some(attr => card.attribute.split(' / ').includes(attr));
         const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
+        const matchesLevel = level ? card.level && card.level.includes(level) : true;
         const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
         const matchesSet = set ? card.set === set : true;  // 卡包篩選
 
         // 返回符合所有條件的卡牌
-        return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet;
+        return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet && matchesLevel;
     });
 
     // 去重邏輯：基於卡牌的所有篩選條件去重
