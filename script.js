@@ -9,7 +9,6 @@ let filteredCards = [];  // 篩選後的卡牌資料
 let currentIndex = -1;  // 當前顯示的卡牌索引
 
 const cardsPerPage = 10;  // 設置每頁顯示的卡牌數量
-const maxPageButtons = 5; // Maximum number of page buttons to display (excluding ellipses)
 let currentPage = 0;  // 初始頁面是第一頁
 
 // 使用 fetch 從 JSON 檔案載入資料
@@ -337,32 +336,8 @@ function generatePaginationControls(totalCards) {
     paginationContainer.innerHTML = ""; // Clear existing pagination controls
     paginationContainer.appendChild(prevPageBtn); // Add previous button
 
-    // Calculate the range of page numbers to display
-    let startPage, endPage;
-
-    if (totalPages <= maxPageButtons) {
-        // If total pages are less than or equal to maxPageButtons, display all pages
-        startPage = 0;
-        endPage = totalPages;
-    } else {
-        // If total pages are more than maxPageButtons, show current page vicinity
-        if (currentPage < maxPageButtons - 2) {
-            // Current page is near the beginning
-            startPage = 0;
-            endPage = maxPageButtons;
-        } else if (currentPage > totalPages - maxPageButtons + 2) {
-            // Current page is near the end
-            startPage = totalPages - maxPageButtons;
-            endPage = totalPages;
-        } else {
-            // Current page is in the middle
-            startPage = currentPage - 2;
-            endPage = currentPage + 3;
-        }
-    }
-
     // Create pagination buttons
-    for (let i = startPage; i < endPage; i++) {
+    for (let i = 0; i < totalPages; i++) {
         const pageButton = document.createElement("button");
         pageButton.textContent = i + 1;
         pageButton.classList.add("pagination-button");
@@ -375,19 +350,6 @@ function generatePaginationControls(totalCards) {
         });
         paginationContainer.appendChild(pageButton);
     }
-
-    // Add ellipses if needed
-    if (startPage > 0) {
-        const ellipsis = document.createElement("span");
-        ellipsis.textContent = "...";
-        paginationContainer.insertBefore(ellipsis, paginationContainer.children[1]);
-    }
-    if (endPage < totalPages) {
-        const ellipsis = document.createElement("span");
-        ellipsis.textContent = "...";
-        paginationContainer.appendChild(ellipsis);
-    }
-    
      paginationContainer.appendChild(nextPageBtn); // Add next button
 
     // Update button states
