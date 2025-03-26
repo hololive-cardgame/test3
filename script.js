@@ -334,7 +334,7 @@ function generatePaginationControls(totalCards) {
 
     // Create pagination buttons
     for (let i = 0; i < totalPages; i++) {
-        const pageButton = document.createElement("button");
+        const pageButton = document.createElement("div");
         pageButton.textContent = i + 1;
         pageButton.classList.add("pagination-button");
         if (i === currentPage) {
