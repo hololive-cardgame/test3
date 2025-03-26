@@ -360,8 +360,12 @@ function generatePaginationControls(totalCards) {
 
     // Add left arrow even on the first page
         const leftArrow = document.createElement("div");
-        leftArrow.textContent = "<";
         leftArrow.classList.add("pagination-arrow");
+        leftArrow.innerHTML = `
+    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowBackIosRoundedIcon">
+           <path d="M16.62 2.99c-.49-.49-1.28-.49-1.77 0L6.54 11.3c-.39.39-.39 1.02 0 1.41l8.31 8.31c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.38 12l7.25-7.25c.48-.48.48-1.28-.01-1.76z"></path>
+         </svg>
+`;
     if (currentPage > 0) {
         leftArrow.addEventListener("click", () => {
                 currentPage--;
@@ -414,8 +418,12 @@ document.head.appendChild(style);
     // Add right arrow even on the last page
 
         const rightArrow = document.createElement("div");
-        rightArrow.textContent = ">";
         rightArrow.classList.add("pagination-arrow");
+        rightArrow.innerHTML = `
+    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowForwardIosRoundedIcon">
+          <path d="M7.38 21.01c.49.49 1.28.49 1.77 0L17.46 12.7c.39-.39.39-1.02 0-1.41l-8.31-8.31c-.49-.49-1.28-.49-1.77 0s-.49 1.28 0 1.77L14.62 12l-7.25 7.25c-.48.48-.48 1.28.01 1.76z"></path>
+        </svg>
+`;
     if (currentPage < totalPages - 1) {
         rightArrow.addEventListener("click", () => {
                 currentPage++;
