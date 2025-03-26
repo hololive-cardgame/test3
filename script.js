@@ -12,6 +12,7 @@ fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
     .then(data => {
         cardsData = data;
+        console.log(cardsData);  // Log the loaded card data to verify
         generateFilterOptions();  // 生成篩選選項
         displayCards(cardsData);  // 顯示所有卡牌
     })
@@ -368,6 +369,9 @@ function removeDuplicates(cards) {
 
 // 顯示卡牌的詳細資訊
 function showPopup(card, index) {
+
+    console.log(card);  // Log the card object to verify its properties
+    
     if (!card || !card.image) {
         console.error("Card or card image is undefined.");
         return;
