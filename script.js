@@ -442,9 +442,9 @@ function showPopup(card, index) {
         const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
         showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
     });
-    
+    */
 }
-*/
+
     document.getElementById('closePopup').addEventListener('click', function() {
         const popup = document.getElementById('popup');
         popup.style.display = 'none'; // 隱藏彈窗
