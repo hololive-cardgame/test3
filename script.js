@@ -13,6 +13,7 @@ fetch("cards.json")
     .then(response => response.json())  // 解析 JSON 資料
     .then(data => {
         cardsData = data;
+        filteredCards = data;  // 初始化 filteredCards 與 cardsData 保持一致
         console.log(cardsData);  // Log the loaded card data to verify
         generateFilterOptions();  // 生成篩選選項
         displayCards(cardsData);  // 顯示所有卡牌
@@ -430,15 +431,15 @@ function showPopup(card, index) {
 
     // 設置左右箭頭的事件，基於篩選後的cards
     document.getElementById('arrowLeft').onclick = () => {
-    const previousIndex = (currentIndex - 1 + cardsData.length) % cardsData.length;  // 處理循環
+    const previousIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
         currentIndex = previousIndex;  // Update the current index
-    showPopup(cardsData[previousIndex], previousIndex);  // 顯示上一張卡牌
+    showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
 };
 
 document.getElementById('arrowRight').onclick = () => {
-    const nextIndex = (currentIndex + 1) % cardsData.length;  // 處理循環
+    const nextIndex = (currentIndex + 1) % filteredCards.length;  // 處理循環
     currentIndex = nextIndex;  // Update the current index
-    showPopup(cardsData[nextIndex], nextIndex);  // 顯示下一張卡牌
+    showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
 };
 
 }
