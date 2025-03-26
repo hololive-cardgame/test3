@@ -464,7 +464,7 @@ function filterCards() {
         const matchesType = type && type !== "allOption" ? card.type === type : true;  // 類型選擇框預設為 "allOption"，如果不為空則篩選
         // const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.some(attr => card.attribute.split(' / ').includes(attr));
         const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
-        const matchesLevel = level ? card.level && card.level.includes(level) : true;
+        // const matchesLevel = level ? card.level && card.level.includes(level) : true;
         const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
         const matchesSet = set ? card.set === set : true;  // 卡包篩選
 
