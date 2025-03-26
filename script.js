@@ -336,9 +336,9 @@ function filterCards() {
     });
 
     // 去重邏輯：基於卡牌的所有篩選條件去重
-    filteredCards = removeDuplicates(filteredCards);
+    const uniqueCards = removeDuplicates(filteredCards);
     
-    displayCards(filteredCards);
+    displayCards(uniqueCards);
 }
 
 // 去重函數，根據所有篩選條件（名稱、類型、屬性、標籤、卡包）進行去重
@@ -365,8 +365,6 @@ function showPopup(card, index) {
         console.error("Card or card image is undefined.");
         return;
     }
-
-    const imageUrl = card.image ? card.image : 'path/to/placeholder/image.png'; // Fallback image URL
     
     document.body.style.overflow = "hidden";  // 禁用背景滾動
     // 獲取彈窗內容區域
@@ -417,28 +415,6 @@ function showPopup(card, index) {
     
     document.getElementById('popup').style.display = 'flex';
 
-    
-    // Remove existing event listeners before adding new ones
-    const arrowLeft = document.getElementById('arrowLeft');
-    const arrowRight = document.getElementById('arrowRight');
-
-     arrowLeft.removeEventListener('click', handleArrowLeftClick);
-    arrowRight.removeEventListener('click', handleArrowRightClick);
-
-    // Define the event handler functions
-    function handleArrowLeftClick() {
-        const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
-        showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
-    }
-    
-    function handleArrowRightClick() {
-        const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
-        showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
-    }
-
-    arrowLeft.addEventListener('click', handleArrowLeftClick);
-    arrowRight.addEventListener('click', handleArrowRightClick);
-/*
     // 設置左右箭頭的事件，基於篩選後的cards
     document.getElementById('arrowLeft').addEventListener('click', () => {
         const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
@@ -449,7 +425,7 @@ function showPopup(card, index) {
         const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
         showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
     });
-    */
+
 }
 
     document.getElementById('closePopup').addEventListener('click', function() {
