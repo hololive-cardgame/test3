@@ -305,7 +305,7 @@ function displayCards(cards) {
         const card = cards[i];
         console.log(card);  // Log the card object to inspect its properties
         if (!card.image) {
-            console.error(`Card at index ${index} is missing an image property`);
+            console.error(`Card at index ${i} is missing an image property`);
             return;
         }
 
@@ -317,7 +317,7 @@ function displayCards(cards) {
 
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            currentIndex = index;  // Update the current index
+            currentIndex = i;  // Update the current index
             showPopup(card, currentIndex);
         });
         cardContainer.appendChild(cardElement);
