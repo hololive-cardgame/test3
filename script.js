@@ -363,7 +363,7 @@ function generatePaginationControls(totalCards) {
 
     // Create pagination buttons
     for (let i = startPage; i < endPage; i++) {
-        const pageButton = document.createElement("div");
+        const pageButton = document.createElement("button");
         pageButton.textContent = i + 1;
         pageButton.classList.add("pagination-button");
         if (i === currentPage) {
@@ -391,8 +391,8 @@ function generatePaginationControls(totalCards) {
      paginationContainer.appendChild(nextPageBtn); // Add next button
 
     // Update button states
-    prevPageBtn.classList.toggle('disabled', currentPage === 0);
-    nextPageBtn.classList.toggle('disabled', currentPage === totalPages - 1);
+    prevPageBtn.disabled = currentPage === 0;
+    nextPageBtn.disabled = currentPage === totalPages - 1;
 }
 
 // Event listeners for pagination arrows
