@@ -6,6 +6,7 @@ const cardContainer = document.getElementById("card-container");  // 卡牌展�
 
 let cardsData = [];  // 所有卡牌資料
 let filteredCards = [];  // 篩選後的卡牌資料
+let currentIndex = -1;  // 當前顯示的卡牌索引
 
 // 使用 fetch 從 JSON 檔案載入資料
 fetch("cards.json")
@@ -308,7 +309,8 @@ function displayCards(cards) {
         
         // 點擊卡牌展示詳細資訊
         cardElement.addEventListener("click", () => {
-            showPopup(card, index);
+            currentIndex = index;  // Update the current index
+            showPopup(card, currentIndex);
         });
         cardContainer.appendChild(cardElement);
     });
@@ -428,12 +430,14 @@ function showPopup(card, index) {
 
     // 設置左右箭頭的事件，基於篩選後的cards
     document.getElementById('arrowLeft').onclick = () => {
-    const previousIndex = (index - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
+    const previousIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;  // 處理循環
+        currentIndex = previousIndex;  // Update the current index
     showPopup(filteredCards[previousIndex], previousIndex);  // 顯示上一張卡牌
 };
 
 document.getElementById('arrowRight').onclick = () => {
-    const nextIndex = (index + 1) % filteredCards.length;  // 處理循環
+    const nextIndex = (currentIndex + 1) % filteredCards.length;  // 處理循環
+    currentIndex = nextIndex;  // Update the current index
     showPopup(filteredCards[nextIndex], nextIndex);  // 顯示下一張卡牌
 };
 
