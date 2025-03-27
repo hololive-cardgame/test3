@@ -73,7 +73,7 @@
         "life": 6,
         "skill": "野兎たち～",
         "spSkill": "幸運兎",
-        "image": "images/hBP01-004_OSR.png"
+        "image": "images/hBP01-004_OSR.png",
         "set": "補充包「エリートスパーク」"
     },
     {
@@ -84,7 +84,7 @@
         "life": 5,
         "skill": "女幹部の采配",
         "spSkill": "ホークアイ",
-        "image": "images/hBP01-005_OSR.png"
+        "image": "images/hBP01-005_OSR.png",
         "set": "補充包「エリートスパーク」"
     },
     {
@@ -95,7 +95,7 @@
         "life": 5,
         "skill": "フェニックステール",
         "spSkill": "Rise from the ashes",
-        "image": "images/hBP01-006_OSR.png"
+        "image": "images/hBP01-006_OSR.png",
         "set": "起始牌組「赤 百鬼あやめ」"
     },
     {
@@ -106,7 +106,7 @@
         "life": 5,
         "skill": "ほうき星",
         "spSkill": "シューティングスター",
-        "image": "images/hBP01-007_OSR.png"
+        "image": "images/hBP01-007_OSR.png",
         "set": "起始牌組「赤 百鬼あやめ」"
     },
     {
@@ -117,7 +117,7 @@
         "life": 6,
         "skill": "レイン・シャーマニズム",
         "spSkill": "雨乞い",
-        "image": "images/hBP01-008_OSR.png"
+        "image": "images/hBP01-008_OSR.png",
         "set": "補充包「ブルーミングレディアンス」"
     },
     {
@@ -131,7 +131,7 @@
         "skill1": "こんかなた～",
         "rule": "這個成員沒有張數限制",
         "batonImage": ["images/arts_null.png"],
-        "image": "images/hBP01-009_C.png"
+        "image": "images/hBP01-009_C.png",
         "set": "補充包「エリートスパーク」"
     }
 ]
