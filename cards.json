@@ -6,7 +6,10 @@
         "attribute": "綠",
         "life": 5,
         "skill": "グリーンエンハンス",
-        "spSkill": "Birthday Gift ～Green～",
+        "spSkill": {
+      "description": "可以擲3次骰子：擲出的點數每有1點，這個藝能傷害+10。【對藍色成員傷害+50】",
+      "images": ["images/arts_null.png", "images/another_image.png"]
+    },
         "image": "images/hBD24-001_P.png",
         "set": "PR卡"
     },
