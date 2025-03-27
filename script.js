@@ -547,12 +547,12 @@ function showPopup(card, index) {
     rightContent.className = 'popup-right';
     rightContent.innerHTML = `
         <h2>${card.name}</h2>
+        <p><strong><span class="label">屬性</span></strong> ${card.attribute}</p>
     `;
 
     if (card.type === "主推") {
         rightContent.innerHTML += `
         <div id="popupOshiType">
-            <p><strong><span class="label">屬性</span></strong> ${card.attribute}</p>
             <p><strong><span class="label">生命值</span></strong> ${card.life}</p>
             <p><strong><span class="label skill">主推技能</span></strong> ${card.skill}</p>
             <p><strong><span class="label spSkill">SP主推技能</span></strong> ${card.spSkill}</p>
