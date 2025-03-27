@@ -560,7 +560,7 @@ function showPopup(card, index) {
           <p>
             <strong><span class="label spSkill">SP主推技能</span></strong>
             <div style="display: flex; flex-direction: row; gap: 3px; align-items: center; white-space: nowrap;">
-              ${card.skill1.images.map(image => `
+              ${card.spSkill.images.map(image => `
                 <img src="${image}" alt="Skill Image" style="width: 15%; max-height: 24px; object-fit: contain;">
               `).join('')}
             </div>
