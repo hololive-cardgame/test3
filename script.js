@@ -472,7 +472,8 @@ function filterCards() {
         const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
         // const matchesSet = set ? card.set.includes(set) : true;  // 卡包篩選
         // const matchesSet = set ? (card.set && Array.isArray(card.set) && card.set.includes(set)) : true;  // 卡包篩選
-        const matchesSet = set ? (card.set && Array.isArray(card.set) ? card.set.includes(set) : card.set === set) : true;  // 卡包篩選
+        // const matchesSet = set ? (card.set && Array.isArray(card.set) ? card.set.includes(set) : card.set === set) : true;  // 卡包篩選
+        const matchesSet = set ? (card.set && Array.isArray(card.set) ? card.set.some(s => s.includes(set)) : card.set.includes(set)) : true;  // 卡包篩選
 
         // 返回符合所有條件的卡牌
         return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet; // matchesLevel
