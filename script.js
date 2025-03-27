@@ -555,7 +555,20 @@ function showPopup(card, index) {
         <div id="popupOshiType">
             <p><strong><span class="label">生命值</span></strong> ${card.life}</p>
             <p><strong><span class="label skill">主推技能</span></strong> ${card.skill}</p>
-            <p><strong><span class="label spSkill">SP主推技能</span></strong> ${card.spSkill}</p>
+            // <p><strong><span class="label spSkill">SP主推技能</span></strong> ${card.spSkill}</p>
+            ${card.spSkill ? `
+          <p>
+            <strong><span class="label spSkill">SP主推技能</span></strong>
+            <div style="display: flex; flex-direction: row; gap: 3px; align-items: center; white-space: nowrap;">
+              ${card.skill1.images.map(image => `
+                <img src="${image}" alt="Skill Image" style="width: 15%; max-height: 24px; object-fit: contain;">
+              `).join('')}
+            </div>
+            <div>
+              <span>${card.spSkill.description}</span>
+            </div>
+          </p>
+        ` : ''}
             <p><strong><span class="label id">卡牌編號</span></strong> ${card.id}</p>
             <p><strong><span class="label">卡包</span></strong> ${card.set}</p>
         </div>`;
