@@ -52,7 +52,8 @@ function generateFilterOptions() {
         }
         if (card.set) {
             if (card.set.includes("起始牌組")) {
-                sets["起始牌組"].add(card.set);
+                const setName = card.set.replace("起始牌組","").trim();
+                sets["起始牌組"].add(setName);
             }else if (card.set.includes("補充包")) {
                 sets["補充包"].add(card.set);
             }else if (card.set === "配件" || card.set === "PR卡"){
