@@ -51,14 +51,17 @@ function generateFilterOptions() {
             card.tag.split(" / ").forEach(tag => tags.add(tag));
         }
         if (card.set) {
-            if (card.set.includes("起始牌組")) {
-                const setName = card.set.replace("起始牌組","").replace(/[「」]/g,"").trim();
-                sets["起始牌組"].add(setName);
-            }else if (card.set.includes("補充包")) {
-                sets["補充包"].add(card.set);
-            }else if (card.set === "配件" || card.set === "PR卡"){
-                sets["其他"].add(card.set);
-            }
+            const cardSets = Array.isArray(card.set) ? card.set : [card.set];
+            cardSets.forEach(setItem => {
+                if (setItem.includes("起始牌組")) {
+                    const setName = setItem.replace("起始牌組","").replace(/[「」]/g,"").trim();
+                    sets["起始牌組"].add(setName);
+                }else if (setItem.includes("補充包")) {
+                    sets["補充包"].add(setItem);
+                }else if (setItem === "配件" || setItem === "PR卡"){
+                    sets["其他"].add(setItem);
+                }
+            });
         }
     });
 
@@ -467,7 +470,9 @@ function filterCards() {
         const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
         // const matchesLevel = level ? card.level && card.level.includes(level) : true;
         const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
-        const matchesSet = set ? card.set.includes(set) : true;  // 卡包篩選
+        // const matchesSet = set ? card.set.includes(set) : true;  // 卡包篩選
+        // const matchesSet = set ? (card.set && Array.isArray(card.set) && card.set.includes(set)) : true;  // 卡包篩選
+        const matchesSet = set ? (card.set && Array.isArray(card.set) ? card.set.includes(set) : card.set === set) : true;  // 卡包篩選
 
         // 返回符合所有條件的卡牌
         return matchesKeyword && matchesType && matchesAttribute && matchesTag && matchesSet; // matchesLevel
