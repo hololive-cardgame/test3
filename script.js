@@ -315,6 +315,12 @@ function generateFilterOptions() {
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
+
+    // 監聽屬性多選項
+    $('#attribute').on('change', function() {
+        // 调用 filterCards 函数来更新筛选结果
+        filterCards();
+    });
     
 }
 
