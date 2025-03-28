@@ -96,8 +96,9 @@ function generateFilterOptions() {
     });
     // 觸發更新
     $("#type").trigger("change");
-    
 
+    
+    /*
     // 清空屬性、多選框
     attributeSelect.innerHTML = "";
     attributes.forEach(attr => {
@@ -111,6 +112,16 @@ function generateFilterOptions() {
             label.appendChild(document.createTextNode(attr));
             attributeSelect.appendChild(label);
         }
+    });
+    */
+    // 填充屬性選項（測試多選下拉選單）
+    attributes.forEach(attribute => {
+        if (attribute) {
+            const option = document.createElement("option");
+            option.value = attribute;
+            option.textContent = attribute;
+            $("#attribute").append(option);
+          }
     });
 
     // 將 Set 轉換為數組，並進行排序
@@ -155,6 +166,13 @@ function generateFilterOptions() {
 
         // 初始化類型（在上方）
 
+        // 初始化屬性
+        $("#attribute").select2({
+            placeholder: "",
+            minimumResultsForSearch: Infinity,
+            width: "100%"
+        });
+
         // 初始化標籤
         $("#tag").select2({
             placeholder: "",
@@ -175,6 +193,11 @@ function generateFilterOptions() {
         });
 
         // 監聽篩選條件變動，觸發篩選
+        $("#attribute").on("select2:select", function() {
+            filterCards();
+        });
+
+        // 監聽篩選條件變動，觸發篩選
         $("#tag").on("select2:select", function() {
             filterCards();
         });
@@ -188,6 +211,9 @@ function generateFilterOptions() {
         $("#keyword").on("select2:select", function (e) {
             $("#clear-keyword").show();  // 顯示自定義清除按鈕
         });
+        $("#attribute").on("select2:select", function (e) {
+            $("#clear-tag").show();
+        });
         $("#tag").on("select2:select", function (e) {
             $("#clear-tag").show();
         });
@@ -198,6 +224,9 @@ function generateFilterOptions() {
         // 監聽 Select2 的清除事件，當選擇框清除選項時隱藏自定義的清除按鈕
         $("#keyword").on("select2:clear", function (e) {
             $("#clear-keyword").hide();  // 隱藏自定義清除按鈕
+        });
+        $("#attribute").on("select2:clear", function (e) {
+            $("#clear-tag").hide();
         });
         $("#tag").on("select2:clear", function (e) {
             $("#clear-tag").hide();
@@ -213,6 +242,19 @@ function generateFilterOptions() {
         
             // 手動關閉下拉選單
             $("#keyword").select2("close");
+        
+            // 隱藏清除按鈕
+            $(this).hide();
+
+            filterCards();
+        });
+
+        $("#clear-attribute").on("click", function() {
+            // 清空選擇框的值並觸發更新
+            $("#attribute").val("").trigger("change");
+        
+            // 手動關閉下拉選單
+            $("#attribute").select2("close");
         
             // 隱藏清除按鈕
             $(this).hide();
@@ -250,6 +292,9 @@ function generateFilterOptions() {
         if ($("#keyword").val() === "") {
             $("#clear-keyword").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
         }
+        if ($("#attribute").val() === "") {
+            $("#clear-attribute").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
+        }
         if ($("#tag").val() === "") {
             $("#clear-tag").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
         }
@@ -259,6 +304,7 @@ function generateFilterOptions() {
         
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
+        $("#attribute").val("").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
@@ -270,24 +316,29 @@ clearFiltersBtn.addEventListener("click", () => {
     // 檢查是否有任何篩選條件被選擇
     const isAnyFilterSelected = $("#keyword").val() ||
                                 $("#type").val() !== "allOption" ||
-                                Array.from(document.querySelectorAll('input[name="attribute"]')).some(checkbox => checkbox.checked) ||
+                                // Array.from(document.querySelectorAll('input[name="attribute"]')).some(checkbox => checkbox.checked) ||
+                                $("#attribute").val() ||
                                 $("#tag").val() ||
                                 $("#set").val();
     if (isAnyFilterSelected) {
         // 如果有篩選條件被選擇，則清除所有篩選條件
         $("#keyword").val("").trigger("change");
         $("#type").val("allOption").trigger("change");
+        $("#attribute").val("").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
-        
+
+        /*
         // 清除所有屬性篩選框的選擇
         const attributeCheckboxes = document.querySelectorAll('input[name="attribute"]');
         attributeCheckboxes.forEach(checkbox => {
             checkbox.checked = false;  // 取消選中所有 checkbox
         });
+        */
 
         // 初始化清除按鈕狀態
         $("#clear-keyword").hide(); // 隱藏 "X"
+        $("#clear-attribute").hide();
         $("#clear-tag").hide();
         $("#clear-set").hide();
 
