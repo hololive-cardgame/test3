@@ -138,45 +138,23 @@ function generateFilterOptions() {
         });
 
     // 填充卡包選項
-    Object.keys(sets).forEach(category => {
-        const optgroup = document.createElement("optgroup");
-        optgroup.label = category; // 設置分組標籤
-
-        // 提取出每個卡包名稱並進行排序
-        const sortedSets = Array.from(sets[category]).sort((a, b) => {
-            // 正則表達式提取卡包中的編號（如「hSD01」「hBP01」）
-            const matchA = a.match(/【(h\w\d+)】/);
-            const matchB = b.match(/【(h\w\d+)】/);
-    
-            if (matchA && matchB) {
-              // 比較提取出來的編號部分進行排序
-              return matchA[1].localeCompare(matchB[1]);
-            }
-                return 0;  // 如果無法匹配，保持原順序
-            });
+  Object.keys(sets).forEach(category => {
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = category;  // 設置分組標籤
         
-        // 添加該分類下的所有卡包選項
-        sortedSets.forEach(set => {
-            const option = document.createElement("option");
-            option.value = set;
-            option.textContent = set;
-            optgroup.appendChild(option);
-        });
-
-        // 把分組添加到 select 元素中
-    if (optgroup.childElementCount > 0) {
-        setSelect.appendChild(optgroup);
-    }
-/*
-        // 把分組添加到 select 元素中
-        setSelect.appendChild(optgroup);
-        */
+    // 添加該分類下的所有卡包選項
+    sets[category].forEach(set => {
+      const option = document.createElement("option");
+      option.value = set;
+      option.textContent = set;
+      optgroup.appendChild(option);
     });
-    // 設定預設為空值（選單本身保持空）
-    setSelect.value = "";
 
-    // Log to verify the appended options
-console.log(setSelect.innerHTML);
+    // 把分組添加到 select 元素中
+    setSelect.appendChild(optgroup);
+  });
+  // 設定預設為空值（選單本身保持空）
+  setSelect.value = "";
 
     // 初始化 Select2
     $(document).ready(function() {
