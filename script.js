@@ -501,7 +501,8 @@ function filterCards() {
     // 獲取篩選條件
     const keyword = $("#keyword").val();  // 關鍵字
     const type = $("#type").val();  // 類型
-    const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);  // 屬性篩選
+    // const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(checkbox => checkbox.value);  // 屬性篩選
+    const selectedAttributes = $("#attribute").val() || [];  // 使用 Select2 获取多选属性值
     const tag = $("#tag").val();  // 標籤篩選
     const set = $("#set").val();  // 卡包篩選
 
@@ -518,7 +519,8 @@ function filterCards() {
         const matchesKeyword = keyword ? card.name.toLowerCase().includes(keyword.toLowerCase()) : true;  // 如果 keyword 不為空，則篩選符合關鍵字的卡牌
         const matchesType = type && type !== "allOption" ? card.type === type : true;  // 類型選擇框預設為 "allOption"，如果不為空則篩選
         // const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.some(attr => card.attribute.split(' / ').includes(attr));
-        const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
+        // const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.includes(card.attribute);  // 如果屬性未選擇，則不篩選屬性
+        const matchesAttribute = selectedAttributes.length === 0 || selectedAttributes.some(attr => card.attribute.split(' / ').includes(attr));
         // const matchesLevel = level ? card.level && card.level.includes(level) : true;
         const matchesTag = tag ? card.tag && card.tag.split(' / ').includes(tag) : true;  // 標籤篩選
         // const matchesSet = set ? card.set.includes(set) : true;  // 卡包篩選
