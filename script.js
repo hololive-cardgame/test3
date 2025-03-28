@@ -164,10 +164,19 @@ function generateFilterOptions() {
         });
 
         // 把分組添加到 select 元素中
+    if (optgroup.childElementCount > 0) {
         setSelect.appendChild(optgroup);
+    }
+/*
+        // 把分組添加到 select 元素中
+        setSelect.appendChild(optgroup);
+        */
     });
     // 設定預設為空值（選單本身保持空）
     setSelect.value = "";
+
+    // Log to verify the appended options
+console.log(setSelect.innerHTML);
 
     // 初始化 Select2
     $(document).ready(function() {
