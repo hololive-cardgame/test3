@@ -187,11 +187,12 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-
+/*
         $('#attribute').on('change', function() {
         // 调用 filterCards 函数来更新筛选结果
         filterCards();
         });
+        */
 
         // 監聽篩選條件變動，觸發篩選
         $("#keyword").on("select2:select", function() {
