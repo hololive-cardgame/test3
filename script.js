@@ -158,6 +158,9 @@ function generateFilterOptions() {
 
     // 初始化 Select2
     $(document).ready(function() {
+
+        let isInitialized = false;  // 标志变量，确保初始化时不触发筛选
+        
         // 初始化關鍵字
         $("#keyword").select2({
             placeholder: "",
@@ -187,31 +190,57 @@ function generateFilterOptions() {
             minimumResultsForSearch: Infinity,
             width: "100%"
         });
-/*
+
+        // Function to set the value without triggering the change event
+    function setSelect2ValueWithoutChange(selector, value) {
+        const Select2 = $.fn.select2.amd.require('select2/core');
+        const $element = $(selector);
+        const instance = $element.data('select2');
+
+        if (instance) {
+            instance.triggerChange = false; // Disable triggering change event
+            $element.val(value).trigger('change');
+            instance.triggerChange = true; // Re-enable triggering change event
+        } else {
+            $element.val(value).trigger('change', { triggerChange: false });
+        }
+    }
+
+        // Initialize the filter options
+    function initializeFilterOptions() {
+        setSelect2ValueWithoutChange("#keyword", "");
+        setSelect2ValueWithoutChange("#type", "allOption");
+        setSelect2ValueWithoutChange("#attribute", "");
+        setSelect2ValueWithoutChange("#tag", "");
+        setSelect2ValueWithoutChange("#set", "");
+    }
+
+    // Call this function to set initial values without triggering change events
+    initializeFilterOptions();
+
         $('#attribute').on('change', function() {
         // 调用 filterCards 函数来更新筛选结果
-        filterCards();
+        if (isInitialized) filterCards();  // Only call filterCards after initialization
         });
-        */
 
         // 監聽篩選條件變動，觸發篩選
         $("#keyword").on("select2:select", function() {
-            filterCards();
+            if (isInitialized) filterCards();  // Only call filterCards after initialization
         });
 
         // 監聽篩選條件變動，觸發篩選
         $("#attribute").on("select2:select", function() {
-            filterCards();
+            if (isInitialized) filterCards();  // Only call filterCards after initialization
         });
 
         // 監聽篩選條件變動，觸發篩選
         $("#tag").on("select2:select", function() {
-            filterCards();
+            if (isInitialized) filterCards();  // Only call filterCards after initialization
         });
 
         // 監聽篩選條件變動，觸發篩選
         $("#set").on("select2:select", function() {
-            filterCards();
+            if (isInitialized) filterCards();  // Only call filterCards after initialization
         });
 
         // 監聽 Select2 的變更事件，當選擇框有值時顯示自定義的清除按鈕
@@ -308,12 +337,16 @@ function generateFilterOptions() {
         if ($("#set").val() === "") {
             $("#clear-set").hide(); // 當沒有選擇任何項目時，隱藏清除按鈕
         }
-        
+
+        // Enable change events after initialization
+    isInitialized = true;
+        /*
         // 清空選擇框的值，並觸發更新
         $("#keyword").val("").trigger("change");
         $("#attribute").val("").trigger("change");
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
+        */
     });
     
 }
@@ -662,10 +695,4 @@ document.getElementById('arrowRight').onclick = () => {
 
 
 // 監聽篩選條件變動，觸發篩選
-attributeSelect.addEventListener("change", filterCards);
-
-// 監聽屬性多選項
-    $('#attribute').on('change', function() {
-        // 调用 filterCards 函数来更新筛选结果
-        filterCards();
-    });
+// attributeSelect.addEventListener("change", filterCards);
