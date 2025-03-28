@@ -315,12 +315,6 @@ function generateFilterOptions() {
         $("#tag").val("").trigger("change");
         $("#set").val("").trigger("change");
     });
-
-    // 監聽屬性多選項
-    $('#attribute').on('change', function() {
-        // 调用 filterCards 函数来更新筛选结果
-        filterCards();
-    });
     
 }
 
@@ -669,3 +663,9 @@ document.getElementById('arrowRight').onclick = () => {
 
 // 監聽篩選條件變動，觸發篩選
 attributeSelect.addEventListener("change", filterCards);
+
+// 監聽屬性多選項
+    $('#attribute').on('change', function() {
+        // 调用 filterCards 函数来更新筛选结果
+        filterCards();
+    });
