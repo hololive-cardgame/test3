@@ -141,9 +141,22 @@ function generateFilterOptions() {
     Object.keys(sets).forEach(category => {
         const optgroup = document.createElement("optgroup");
         optgroup.label = category; // 設置分組標籤
+
+        // 提取出每個卡包名稱並進行排序
+        const sortedSets = Array.from(sets[category]).sort((a, b) => {
+            // 正則表達式提取卡包中的編號（如「hSD01」「hBP01」）
+            const matchA = a.match(/【(h\w\d+)】/);
+            const matchB = b.match(/【(h\w\d+)】/);
+    
+            if (matchA && matchB) {
+              // 比較提取出來的編號部分進行排序
+              return matchA[1].localeCompare(matchB[1]);
+            }
+                return 0;  // 如果無法匹配，保持原順序
+            });
         
         // 添加該分類下的所有卡包選項
-        sets[category].forEach(set => {
+        sortedSets.forEach(set => {
             const option = document.createElement("option");
             option.value = set;
             option.textContent = set;
