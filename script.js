@@ -136,7 +136,7 @@ function generateFilterOptions() {
                 $("#tag").append(option);
             }
         });
-
+/*
     // 填充卡包選項
   Object.keys(sets).forEach(category => {
     const optgroup = document.createElement("optgroup");
@@ -155,7 +155,41 @@ function generateFilterOptions() {
   });
   // 設定預設為空值（選單本身保持空）
   setSelect.value = "";
+*/
 
+    // 填充卡包選項(卡包排序)
+    Object.keys(sets).forEach(category => {
+  const optgroup = document.createElement("optgroup");
+  optgroup.label = category;  // 設置分組標籤
+
+  // 對該分類下的卡包進行自訂排序，依照編號進行排序
+  sets[category].sort((a, b) => {
+    const extractNumber = (str) => {
+      // 正則表達式提取 hSD 或 hBP 中的數字部分
+      const matchSD = str.match(/hSD(\d+)/);
+      const matchBP = str.match(/hBP(\d+)/);
+      if (matchSD) return parseInt(matchSD[1], 10);
+      if (matchBP) return parseInt(matchBP[1], 10);
+      return Infinity;  // 若不符合格式，將其排到最後
+    };
+
+    return extractNumber(a) - extractNumber(b);  // 按提取的數字進行排序
+  }).forEach(set => {
+    const option = document.createElement("option");
+    option.value = set;
+    option.textContent = set;
+    optgroup.appendChild(option);
+  });
+
+  // 把分組添加到 select 元素中
+  setSelect.appendChild(optgroup);
+});
+
+// 設定預設為空值（選單本身保持空）
+setSelect.value = "";
+
+
+    
     // 初始化 Select2
     $(document).ready(function() {
 
