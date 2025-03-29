@@ -158,34 +158,44 @@ function generateFilterOptions() {
 */
 
     // 填充卡包選項(卡包排序)
-    Object.keys(sets).forEach(category => {
-  const optgroup = document.createElement("optgroup");
-  optgroup.label = category;  // 設置分組標籤
-
-  // 對該分類下的卡包進行自訂排序，依照編號進行排序
-  sets[category].sort((a, b) => {
-    const extractNumber = (str) => {
-      // 正則表達式提取 hSD 或 hBP 中的數字部分
-      const matchSD = str.match(/hSD(\d+)/);
-      const matchBP = str.match(/hBP(\d+)/);
-      if (matchSD) return parseInt(matchSD[1], 10);
-      if (matchBP) return parseInt(matchBP[1], 10);
-      return Infinity;  // 若不符合格式，將其排到最後
+    // Custom sort function based on the number in hSD or hBP
+function customSort(arr) {
+  return arr.sort((a, b) => {
+    // Function to extract the number after hSD or hBP using a more general regular expression
+    const extractNumber = (set) => {
+      const match = set.match(/h\w+(\d+)/); // Match h followed by letters (e.g., SD, BP) and capture the digits
+      if (match) {
+        return parseInt(match[1], 10); // Extract and return the number part
+      }
+      return Infinity; // If no match, push to the end
     };
 
-    return extractNumber(a) - extractNumber(b);  // 按提取的數字進行排序
-  }).forEach(set => {
+    const numberA = extractNumber(a);
+    const numberB = extractNumber(b);
+
+    return numberA - numberB;  // Sort by the extracted number
+  });
+}
+
+// Fill the card package options
+Object.keys(sets).forEach(category => {
+  const optgroup = document.createElement("optgroup");
+  optgroup.label = category;  // Set group label
+
+  // Add all card package options in the category
+  const sortedSets = customSort(Array.from(sets[category]));
+  sortedSets.forEach(set => {
     const option = document.createElement("option");
     option.value = set;
     option.textContent = set;
     optgroup.appendChild(option);
   });
 
-  // 把分組添加到 select 元素中
+  // Add the group to the select element
   setSelect.appendChild(optgroup);
 });
 
-// 設定預設為空值（選單本身保持空）
+// Set default value to empty (keep the menu empty)
 setSelect.value = "";
 
 
